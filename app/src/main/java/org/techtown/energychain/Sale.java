@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class energyhistory extends AppCompatActivity {
+public class Sale extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_energyhistory);
+        setContentView(R.layout.activity_sale);
+
         final Button energymainButton = (Button)findViewById(R.id.energymainButton);
         final Button purchaseButton = (Button)findViewById(R.id.purchaseButton);
         final Button saleButton = (Button)findViewById(R.id.saleButton);
@@ -22,7 +23,7 @@ public class energyhistory extends AppCompatActivity {
         energymainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(energyhistory.this, MainActivity.class);
+                Intent mainIntent = new Intent(Sale.this, MainActivity.class);
                 startActivity(mainIntent);
             }
         });
@@ -30,7 +31,7 @@ public class energyhistory extends AppCompatActivity {
         purchaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(energyhistory.this, Purchase.class);
+                Intent mainIntent = new Intent(Sale.this, Purchase.class);
                 startActivity(mainIntent);
             }
         });
@@ -40,7 +41,7 @@ public class energyhistory extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent mainIntent = new Intent(energyhistory.this, Sale.class);
+                Intent mainIntent = new Intent(Sale.this, Sale.class);
                 startActivity(mainIntent);
             }
         });
@@ -49,7 +50,7 @@ public class energyhistory extends AppCompatActivity {
         mydataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(energyhistory.this, MyPage.class);
+                Intent mainIntent = new Intent(Sale.this, MyPage.class);
                 startActivity(mainIntent);
             }
         });

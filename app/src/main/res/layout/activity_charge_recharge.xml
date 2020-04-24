@@ -6,7 +6,65 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/energymainButton"
+            android:paddingTop="6dp"
+            android:drawableTop="@drawable/ic_home_black_40dp"
+            android:drawablePadding="-110dp"
+            android:background="@color/white"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp">
+        </Button>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/purchaseButton"
+            android:text="구매"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/saleButton"
+            android:text="판매"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/mydataButton"
+            android:text="내정보"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/my_waken_layout"
         android:layout_width="match_parent"

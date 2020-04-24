@@ -54,6 +54,7 @@ public class charge_recharge extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainIntent = new Intent(charge_recharge.this, MyPage.class);
                 startActivity(mainIntent);
+
             }
         });
     }

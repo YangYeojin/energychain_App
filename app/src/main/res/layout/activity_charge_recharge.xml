@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".charge_recharge">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -65,11 +65,12 @@
             android:layout_marginTop="8dp"/>
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/my_waken_layout"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@color/colorChargeGrey"
+        android:background="@color/colorPrimaryDark"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -96,7 +97,7 @@
             android:gravity="right|center_vertical"
             android:hint="waken이 표시됨"
             android:textColor="@color/white"
-            android:textColorHint="#CDCDCD"
+            android:textColorHint="@color/white"
             android:textSize="24sp" />
 
     </LinearLayout>
@@ -155,11 +156,11 @@
                         android:layout_width="75dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:onClick="charge_waken_Click"
                         android:text="천 원"
                         android:textColor="@color/colorChargeGrey"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:onClick="charge_waken_Click" />
 
                 </LinearLayout>
 

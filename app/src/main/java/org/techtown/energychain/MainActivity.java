@@ -65,18 +65,23 @@ public class MainActivity extends AppCompatActivity {
 
 
         mydataButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                energymain.setVisibility(View.GONE);
-                purchaseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                saleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                mydataButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new Mydata_Fragment());
-                fragmentTransaction.commit();
+        @Override
+        public void onClick(View v) {
+            Intent mainIntent = new Intent(MainActivity.this, MyPage.class);
+            startActivity(mainIntent);
             }
         });
+
+//                energymain.setVisibility(View.GONE);
+//                purchaseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+//                saleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+//                mydataButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+//                FragmentManager fragmentManager = getSupportFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.fragment, new Mydata_Fragment());
+//                fragmentTransaction.commit();
+//            }
+//        });
 
         TextView searchChargeButton = (TextView)findViewById(R.id.searchChargeButton);
         searchChargeButton.setOnClickListener(new TextView.OnClickListener() {

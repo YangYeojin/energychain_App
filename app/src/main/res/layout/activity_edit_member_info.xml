@@ -188,7 +188,7 @@
 
                     <EditText
                         android:id="@+id/eif_pwcheck_editText"
-                        android:layout_width="200dp"
+                        android:layout_width="203dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:layout_weight="1"

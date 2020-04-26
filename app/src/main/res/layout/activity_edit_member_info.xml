@@ -102,9 +102,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:paddingLeft="60dp"
+                android:paddingLeft="50dp"
                 android:paddingTop="30dp"
-                android:paddingRight="60dp">
+                android:paddingRight="50dp">
 
                 <LinearLayout
                     android:id="@+id/editInfo_id"
@@ -117,8 +117,8 @@
                         android:id="@+id/eif_id"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:layout_marginRight="20dp"
+                        android:layout_weight="1"
                         android:gravity="left|center_vertical"
                         android:text="아이디"
                         android:textColor="@color/colorWarning"
@@ -131,11 +131,11 @@
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:gravity="center_vertical"
+                        android:hint="아이디가 입력됩니다."
                         android:inputType="textPersonName"
                         android:saveEnabled="false"
-                        android:hint="아이디가 입력됩니다."
-                        android:gravity="center_vertical"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
@@ -152,8 +152,8 @@
                         android:id="@+id/eif_name"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
                         android:layout_marginRight="20dp"
+                        android:layout_weight="1"
                         android:gravity="left|center_vertical"
                         android:text="이름"
                         android:textColor="@color/colorWarning"
@@ -166,10 +166,10 @@
                         android:layout_height="50dp"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:gravity="center_vertical"
+                        android:hint="이름이 입력됩니다."
                         android:inputType="textPersonName"
                         android:saveEnabled="false"
-                        android:hint="이름이 입력됩니다."
-                        android:gravity="center_vertical"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -183,12 +183,11 @@
 
                     <TextView
                         android:id="@+id/eif_email"
-                        android:layout_width="wrap_content"
+                        android:layout_width="60dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
                         android:layout_marginRight="20dp"
                         android:layout_weight="1"
-                        android:autoText="false"
                         android:gravity="center_vertical"
                         android:text="이메일"
                         android:textColor="@color/colorWarning"
@@ -196,8 +195,8 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/emailText"
-                        android:layout_width="200dp"
+                        android:id="@+id/eif_EmailText"
+                        android:layout_width="230dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@color/colorPrimary"
@@ -206,7 +205,8 @@
                         android:hint="이메일을 입력하세요"
                         android:padding="10dp"
                         android:textColor="#ffffff"
-                        android:textColorHint="#ffffff" />
+                        android:textColorHint="#ffffff"
+                        android:textSize="16sp" />
                 </LinearLayout>
 
                 <TextView
@@ -229,7 +229,7 @@
 
                     <EditText
                         android:id="@+id/eif_pw_EditText"
-                        android:layout_width="200dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left|center_vertical"
                         android:layout_marginRight="20dp"
@@ -237,14 +237,7 @@
                         android:ems="10"
                         android:hint="변경할 비밀번호를 입력하세요."
                         android:inputType="textPassword"
-                        android:textSize="14sp" />
-
-                    <Button
-                        android:id="@+id/elf_edit_pw_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Button" />
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -257,34 +250,14 @@
 
                     <EditText
                         android:id="@+id/eif_pwcheck_editText"
-                        android:layout_width="200dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="다시 한 번 입력하세요."
                         android:inputType="textPassword"
-                        android:textSize="14sp" />
-
-                    <FrameLayout
-                        android:id="@+id/eif_pw_check_img"
-                        android:layout_width="50dp"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:id="@+id/eif_pw_check_red"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            app:srcCompat="@drawable/ic_cancel_red_40dp" />
-
-                        <ImageView
-                            android:id="@+id/eif_pw_check_green"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            app:srcCompat="@drawable/ic_check_green_40dp" />
-                    </FrameLayout>
+                        android:textSize="18sp" />
 
 
                 </LinearLayout>
@@ -348,8 +321,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="Name" />
+                        android:inputType="number" />
                 </LinearLayout>
 
                 <Button
@@ -358,7 +330,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:background="@drawable/main_button"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/edit_button_drawable"
+                    android:onClick="onEditButtonClicked"
                     android:text="변경하기"
                     android:textColor="#ffffff"
                     android:textSize="20dp"

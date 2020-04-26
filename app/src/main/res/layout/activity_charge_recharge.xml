@@ -149,18 +149,20 @@
                         android:ems="10"
                         android:gravity="right|center_vertical"
                         android:hint="충전할 금액을 입력하세요."
-                        android:inputType="textPersonName" />
+                        android:inputType="number"
+                        android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/onButton_charge_waken_with_won"
                         android:layout_width="75dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="@drawable/edit_button_drawable"
+                        android:onClick="charge_waken_Click"
                         android:text="천 원"
-                        android:textColor="@color/colorChargeGrey"
+                        android:textColor="@color/white"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:onClick="charge_waken_Click" />
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -236,16 +238,17 @@
                         android:ems="10"
                         android:gravity="right|center_vertical"
                         android:hint="환전할 금액을 입력하세요."
-                        android:inputType="textPersonName" />
+                        android:inputType="number" />
 
                     <Button
                         android:id="@+id/onButton_recharge_waken_to_won"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="@drawable/edit_button_drawable"
                         android:onClick="charge_money_Click"
                         android:text="Waken"
-                        android:textColor="@color/colorChargeGrey"
+                        android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>
 

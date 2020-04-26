@@ -65,6 +65,7 @@ public class charge_recharge extends AppCompatActivity {
         int n1 = Integer.parseInt(charge_waken.getText().toString());
         int n2 = 1000;
         charged_waken.setText(Integer.toString(n1*n2));
+        charge_waken.setText("");
     }
 
     public void charge_money_Click(View v) {
@@ -72,5 +73,6 @@ public class charge_recharge extends AppCompatActivity {
         TextView recharged_money = (TextView) findViewById(R.id.recharged_money);
         int n1 = Integer.parseInt(recharge_waken.getText().toString());
         recharged_money.setText(Integer.toString(n1));
+        recharge_waken.setText("");
     }
 }

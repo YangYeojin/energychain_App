@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-
+        <activity android:name=".Notice"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -32,18 +32,16 @@
         <activity
             android:name=".searchCharge"
             android:label="@string/title_activity_search_charge" />
-        
         <activity android:name=".tokenmanagement" />
         <activity android:name=".energyhistory" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Car_Register" />
-        <activity android:name=".Purchase"/>
-        <activity android:name=".MyPage"/>
-        <activity android:name=".EditMemberInfoActivity"/>
+        <activity android:name=".Purchase" />
+        <activity android:name=".MyPage" />
+        <activity android:name=".EditMemberInfoActivity" />
         <activity android:name=".Sale" />
         <activity android:name=".charge_recharge" />
         <activity android:name=".RegisterActivity" />
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

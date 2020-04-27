@@ -79,15 +79,16 @@
                 android:background="@drawable/main_button"/>
 
             <Button
+                android:id="@+id/login_loginButton"
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/main_button"
                 android:text="로그인"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center"/>
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -8,6 +8,7 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".developer"></activity>
+        <activity android:name=".TransactionHistory"></activity>
+        <activity android:name=".developer" />
         <activity android:name=".Notice" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -34,7 +36,6 @@
             android:name=".searchCharge"
             android:label="@string/title_activity_search_charge" />
         <activity android:name=".tokenmanagement" />
-        <activity android:name=".energyhistory" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Car_Register" />
         <activity android:name=".Purchase" />
@@ -44,6 +45,7 @@
         <activity android:name=".charge_recharge" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

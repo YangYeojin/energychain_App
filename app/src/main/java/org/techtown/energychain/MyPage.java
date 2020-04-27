@@ -85,7 +85,7 @@ public class MyPage extends AppCompatActivity {
         TransactionHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(MyPage.this, energyhistory.class); //거래내역
+                Intent mainIntent = new Intent(MyPage.this, TransactionHistory.class); //거래내역
                 startActivity(mainIntent);
             }});
 

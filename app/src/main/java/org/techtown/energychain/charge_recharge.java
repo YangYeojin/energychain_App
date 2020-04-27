@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class charge_recharge extends AppCompatActivity {
 
@@ -62,15 +63,23 @@ public class charge_recharge extends AppCompatActivity {
     public void charge_waken_Click(View v) {
         EditText charge_waken = (EditText) findViewById(R.id.charge_waken);
         TextView charged_waken = (TextView) findViewById(R.id.charged_waken);
-        int n1 = Integer.parseInt(charge_waken.getText().toString());
-        int n2 = 1000;
-        charged_waken.setText(Integer.toString(n1*n2));
+        if (charge_waken.getText().toString().matches("")){
+            Toast.makeText(getApplicationContext(), "금액을 입력하세요.", Toast.LENGTH_SHORT).show();
+        } else {
+            int n1 = Integer.parseInt(charge_waken.getText().toString());
+            int n2 = 1000;
+            charged_waken.setText(Integer.toString(n1*n2));
+        }
     }
 
     public void charge_money_Click(View v) {
         EditText recharge_waken = (EditText) findViewById(R.id.recharge_waken);
         TextView recharged_money = (TextView) findViewById(R.id.recharged_money);
-        int n1 = Integer.parseInt(recharge_waken.getText().toString());
-        recharged_money.setText(Integer.toString(n1));
+        if (recharge_waken.getText().toString().matches("")){
+            Toast.makeText(getApplicationContext(), "금액을 입력하세요.", Toast.LENGTH_SHORT).show();
+        } else {
+            int n1 = Integer.parseInt(recharge_waken.getText().toString());
+            recharged_money.setText(Integer.toString(n1));
+        }
     }
 }

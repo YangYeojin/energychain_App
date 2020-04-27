@@ -1,10 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> master
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     tools:context=".EditMemberInfo">
+=======
+    android:orientation="vertical"
+    tools:context=".EditMemberInfoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/energymainButton"
+            android:paddingTop="6dp"
+            android:drawableTop="@drawable/ic_home_black_40dp"
+            android:drawablePadding="-110dp"
+            android:background="@color/white"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp">
+        </Button>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/purchaseButton"
+            android:text="구매"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/saleButton"
+            android:text="판매"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/mydataButton"
+            android:text="내정보"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+>>>>>>> master
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,8 +84,14 @@
             android:id="@+id/editInfo_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:background="@color/colorPrimary"
             android:orientation="vertical">
+=======
+            android:orientation="vertical"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+>>>>>>> master
 
 
             <TextView
@@ -24,11 +99,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+<<<<<<< HEAD
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="회원 정보 변경"
                 android:textColor="#ffffff"
                 android:textSize="30dp"
+=======
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="회원 정보 변경"
+                android:textColor="@color/colorChargeGrey"
+                android:textSize="24sp"
+>>>>>>> master
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -41,9 +124,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+<<<<<<< HEAD
                 android:paddingLeft="60dp"
                 android:paddingTop="40dp"
                 android:paddingRight="60dp">
+=======
+                android:paddingLeft="50dp"
+                android:paddingTop="20dp"
+                android:paddingRight="50dp">
+>>>>>>> master
 
                 <LinearLayout
                     android:id="@+id/editInfo_id"
@@ -56,6 +145,10 @@
                         android:id="@+id/eif_id"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
+<<<<<<< HEAD
+=======
+                        android:layout_marginRight="20dp"
+>>>>>>> master
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
                         android:text="아이디"
@@ -63,6 +156,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
+<<<<<<< HEAD
                     <EditText
                         android:id="@+id/eif_id_editText"
                         android:layout_width="wrap_content"
@@ -71,6 +165,19 @@
                         android:ems="10"
                         android:inputType="textPersonName"
                         android:saveEnabled="false" />
+=======
+                    <TextView
+                        android:id="@+id/eif_id_TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:gravity="center_vertical"
+                        android:hint="아이디가 입력됩니다."
+                        android:inputType="textPersonName"
+                        android:saveEnabled="false"
+                        android:textSize="18sp" />
+>>>>>>> master
 
 
                 </LinearLayout>
@@ -87,6 +194,10 @@
                         android:id="@+id/eif_name"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
+<<<<<<< HEAD
+=======
+                        android:layout_marginRight="20dp"
+>>>>>>> master
                         android:layout_weight="1"
                         android:gravity="left|center_vertical"
                         android:text="이름"
@@ -94,6 +205,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
+<<<<<<< HEAD
                     <EditText
                         android:id="@+id/eif_name_editText"
                         android:layout_width="wrap_content"
@@ -101,6 +213,19 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:inputType="textPersonName" />
+=======
+                    <TextView
+                        android:id="@+id/eif_name_TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:gravity="center_vertical"
+                        android:hint="이름이 입력됩니다."
+                        android:inputType="textPersonName"
+                        android:saveEnabled="false"
+                        android:textSize="18sp" />
+>>>>>>> master
 
                 </LinearLayout>
 
@@ -108,18 +233,29 @@
                     android:id="@+id/editInfo_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+<<<<<<< HEAD
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="15dp"
+=======
+                    android:layout_marginBottom="10dp"
+>>>>>>> master
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/eif_email"
+<<<<<<< HEAD
                         android:layout_width="wrap_content"
+=======
+                        android:layout_width="60dp"
+>>>>>>> master
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
                         android:layout_marginRight="20dp"
                         android:layout_weight="1"
+<<<<<<< HEAD
                         android:autoText="false"
+=======
+>>>>>>> master
                         android:gravity="center_vertical"
                         android:text="이메일"
                         android:textColor="@color/colorWarning"
@@ -127,8 +263,13 @@
                         android:textStyle="bold" />
 
                     <EditText
+<<<<<<< HEAD
                         android:id="@+id/emailText"
                         android:layout_width="200dp"
+=======
+                        android:id="@+id/eif_EmailText"
+                        android:layout_width="230dp"
+>>>>>>> master
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@color/colorPrimary"
@@ -137,7 +278,12 @@
                         android:hint="이메일을 입력하세요"
                         android:padding="10dp"
                         android:textColor="#ffffff"
+<<<<<<< HEAD
                         android:textColorHint="#ffffff" />
+=======
+                        android:textColorHint="#ffffff"
+                        android:textSize="16sp" />
+>>>>>>> master
                 </LinearLayout>
 
                 <TextView
@@ -160,7 +306,11 @@
 
                     <EditText
                         android:id="@+id/eif_pw_EditText"
+<<<<<<< HEAD
                         android:layout_width="200dp"
+=======
+                        android:layout_width="match_parent"
+>>>>>>> master
                         android:layout_height="wrap_content"
                         android:layout_gravity="left|center_vertical"
                         android:layout_marginRight="20dp"
@@ -168,6 +318,7 @@
                         android:ems="10"
                         android:hint="변경할 비밀번호를 입력하세요."
                         android:inputType="textPassword"
+<<<<<<< HEAD
                         android:textSize="14sp" />
 
                     <Button
@@ -176,6 +327,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Button" />
+=======
+                        android:textSize="18sp" />
+>>>>>>> master
 
                 </LinearLayout>
 
@@ -188,13 +342,18 @@
 
                     <EditText
                         android:id="@+id/eif_pwcheck_editText"
+<<<<<<< HEAD
                         android:layout_width="200dp"
+=======
+                        android:layout_width="match_parent"
+>>>>>>> master
                         android:layout_height="wrap_content"
                         android:layout_marginRight="20dp"
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="다시 한 번 입력하세요."
                         android:inputType="textPassword"
+<<<<<<< HEAD
                         android:textSize="14sp" />
 
                     <FrameLayout
@@ -203,6 +362,10 @@
                         android:layout_weight="1">
 
                     </FrameLayout>
+=======
+                        android:textSize="18sp" />
+
+>>>>>>> master
 
                 </LinearLayout>
 
@@ -227,6 +390,10 @@
                         android:id="@+id/eif_bank"
                         android:layout_width="90dp"
                         android:layout_height="wrap_content"
+<<<<<<< HEAD
+=======
+                        android:layout_gravity="center_vertical"
+>>>>>>> master
                         android:layout_marginRight="20dp"
                         android:layout_weight="1"
                         android:text="은행명"
@@ -237,8 +404,14 @@
                     <Spinner
                         android:id="@+id/eif_bank_spinner"
                         android:layout_width="200dp"
+<<<<<<< HEAD
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
+=======
+                        android:layout_height="30dp"
+                        android:layout_weight="1"
+                        android:spinnerMode="dialog" />
+>>>>>>> master
                 </LinearLayout>
 
                 <LinearLayout
@@ -265,8 +438,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
+<<<<<<< HEAD
                         android:inputType="textPersonName"
                         android:text="Name" />
+=======
+                        android:inputType="number" />
+>>>>>>> master
                 </LinearLayout>
 
                 <Button
@@ -275,7 +452,13 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="30dp"
+<<<<<<< HEAD
                     android:background="@drawable/main_button"
+=======
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/edit_button_drawable"
+                    android:onClick="onEditButtonClicked"
+>>>>>>> master
                     android:text="변경하기"
                     android:textColor="#ffffff"
                     android:textSize="20dp"
@@ -284,4 +467,8 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
+<<<<<<< HEAD
 </RelativeLayout>
+=======
+</LinearLayout>
+>>>>>>> master

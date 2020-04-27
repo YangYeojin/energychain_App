@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="bank">
+        <item>은행을 선택하세요</item>
+        <item>우리은행</item>
+        <item>국민은행</item>
+        <item>기업은행</item>
+        <item>농협은행</item>
+        <item>신한은행</item>
+        <item>하나은행</item>
+        <item>한국씨티은행</item>
+        <item>SC제일은행</item>
+        <item>경남은행</item>
+        <item>광주은행</item>
+        <item>대수은행</item>
+        <item>도이치은행</item>
+        <item>부산은행</item>
+        <item>비엔비파리은행</item>
+        <item>산림조합</item>
+        <item>산업은행</item>
+        <item>새마을금고</item>
+        <item>수출입은행</item>
+        <item>수협은행</item>
+        <item>신협</item>
+        <item>우체국</item>
+        <item>저축은행</item>
+        <item>전북은행</item>
+        <item>제주은행</item>
+        <item>중국건설은행</item>
+        <item>중국공상은행</item>
+        <item>카카오뱅크</item>
+        <item>케이뱅크</item>
+        <item>BOA</item>
+        <item>HSBC은행</item>
+        <item>JP모간체이스은행</item>
+        <item>국세납부</item>
+    </string-array>
+</resources>

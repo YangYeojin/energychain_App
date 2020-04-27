@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         final Button purchaseButton = (Button)findViewById(R.id.purchaseButton);
         final Button saleButton = (Button)findViewById(R.id.saleButton);
         final Button mydataButton = (Button)findViewById(R.id.mydataButton);
-        final LinearLayout energymain = (LinearLayout)findViewById(R.id.energymain);
+        final Button developerButton =(Button)findViewById(R.id.developerButton);
 
 
         energymainButton.setOnClickListener(new View.OnClickListener() {
@@ -37,14 +37,8 @@ public class MainActivity extends AppCompatActivity {
         purchaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                energymain.setVisibility(View.GONE);
-                purchaseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                saleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                mydataButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new Purchase_Fragment());
-                fragmentTransaction.commit();
+                Intent mainIntent = new Intent(MainActivity.this, Purchase.class);
+                startActivity(mainIntent);
             }
         });
 
@@ -52,19 +46,15 @@ public class MainActivity extends AppCompatActivity {
         saleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                energymain.setVisibility(View.GONE);
-                purchaseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                saleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                mydataButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment, new Sale_Fragment());
-                fragmentTransaction.commit();
+
+                Intent mainIntent = new Intent(MainActivity.this, Sale.class);
+                startActivity(mainIntent);
             }
         });
 
 
         mydataButton.setOnClickListener(new View.OnClickListener() {
+<<<<<<< HEAD
         @Override
         public void onClick(View v) {
             Intent mainIntent = new Intent(MainActivity.this, MyPage.class);
@@ -82,6 +72,23 @@ public class MainActivity extends AppCompatActivity {
 //                fragmentTransaction.commit();
 //            }
 //        });
+=======
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(MainActivity.this, MyPage.class);
+                startActivity(mainIntent);
+            }
+        });
+
+        developerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(MainActivity.this, developer.class);
+                startActivity(mainIntent);
+            }
+        });
+
+>>>>>>> master
 
         TextView searchChargeButton = (TextView)findViewById(R.id.searchChargeButton);
         searchChargeButton.setOnClickListener(new TextView.OnClickListener() {
@@ -96,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     }
 
     private long lastTimeBackPressed; //뒤로 두번 클릭시 앱 종료
@@ -105,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return;
         }
-        Toast.makeText(this, "'뒤로' 버튼을 한 번 더 눌러 종료합니다.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "한 번 더 누르면 로그인 페이지로 이동", Toast.LENGTH_SHORT).show();
         lastTimeBackPressed=System.currentTimeMillis();
     }
 }

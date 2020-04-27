@@ -17,8 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class EditMemberInfoActivity extends AppCompatActivity {
 
-    //private ArrayAdapter adapter;
-    //private Spinner spinner;
+    private ArrayAdapter adapter;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +64,10 @@ public class EditMemberInfoActivity extends AppCompatActivity {
                 startActivity(mainIntent);
             }
         });
+
+        spinner = (Spinner)findViewById(R.id.eif_bank_spinner);
+        adapter = ArrayAdapter.createFromResource(this, R.array.bank, android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
 
     }
 

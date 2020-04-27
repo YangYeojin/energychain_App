@@ -114,8 +114,8 @@
             <LinearLayout
                 android:id="@+id/charge_biggest_layout"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:layout_marginTop="30dp"
+                android:layout_height="240dp"
+                android:layout_marginTop="20dp"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -142,26 +142,37 @@
 
                     <EditText
                         android:id="@+id/charge_waken"
-                        android:layout_width="203dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:gravity="right|center_vertical"
-                        android:hint="충전할 금액을 입력하세요."
+                        android:gravity="left|center_vertical"
+                        android:hint="금액을 입력하세요."
                         android:inputType="number"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/charged_waken_text_own"
+                        android:layout_width="30dp"
+                        android:layout_height="44dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="천 원"
+                        android:textColor="@color/colorChargeGrey"
                         android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/onButton_charge_waken_with_won"
-                        android:layout_width="75dp"
+                        android:layout_width="55dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/edit_button_drawable"
                         android:onClick="charge_waken_Click"
-                        android:text="천 원"
+                        android:text="금액 확인"
                         android:textColor="@color/white"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -180,7 +191,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginRight="20dp"
                         android:layout_weight="1"
-                        android:gravity="right|center_vertical"
+                        android:gravity="left|center_vertical"
                         android:hint="충전되는 waken입니다."
                         android:textColor="#232323"
                         android:textSize="18sp" />
@@ -198,12 +209,23 @@
 
                 </LinearLayout>
 
+                <Button
+                    android:id="@+id/onButton_charge_waken_with_won_really"
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_button_drawable"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:text="Waken 충전하기" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/recharge_biggert_layout"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="240dp"
                 android:layout_marginTop="30dp"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
@@ -231,25 +253,37 @@
 
                     <EditText
                         android:id="@+id/recharge_waken"
-                        android:layout_width="223dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:gravity="right|center_vertical"
-                        android:hint="환전할 금액을 입력하세요."
+                        android:gravity="left|center_vertical"
+                        android:hint="금액을 입력하세요."
                         android:inputType="number" />
+
+                    <TextView
+                        android:id="@+id/charged_waken_text_waken"
+                        android:layout_width="30dp"
+                        android:layout_height="44dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="waken"
+                        android:textColor="@color/colorChargeGrey"
+                        android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/onButton_recharge_waken_to_won"
-                        android:layout_width="wrap_content"
+                        android:layout_width="55dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/edit_button_drawable"
                         android:onClick="charge_money_Click"
-                        android:text="Waken"
+                        android:text="금액 확인"
                         android:textColor="@color/white"
-                        android:textSize="20sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -266,7 +300,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginRight="20dp"
                         android:layout_weight="1"
-                        android:gravity="right|center_vertical"
+                        android:gravity="left|center_vertical"
                         android:hint="환전되는 금액입니다."
                         android:textSize="18sp" />
 
@@ -282,6 +316,17 @@
                         android:textSize="20sp" />
 
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/onButton_recharge_waken_to_won_really"
+                    android:layout_width="340dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_button_drawable"
+                    android:text="Waken 환전하기"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
             </LinearLayout>
 

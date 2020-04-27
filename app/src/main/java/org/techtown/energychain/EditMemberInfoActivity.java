@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -69,6 +70,10 @@ public class EditMemberInfoActivity extends AppCompatActivity {
         adapter = ArrayAdapter.createFromResource(this, R.array.bank, android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+        // output id from server
+        TextView eif_id_TextView;
+        eif_id_TextView = findViewById(R.id.eif_id_TextView);
+        
     }
 
     // logic of edit_button

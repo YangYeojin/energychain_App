@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         final Button purchaseButton = (Button)findViewById(R.id.purchaseButton);
         final Button saleButton = (Button)findViewById(R.id.saleButton);
         final Button mydataButton = (Button)findViewById(R.id.mydataButton);
+        final Button developerButton =(Button)findViewById(R.id.developerButton);
 
 
         energymainButton.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +61,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        developerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(MainActivity.this, developer.class);
+                startActivity(mainIntent);
+            }
+        });
+
+
         TextView searchChargeButton = (TextView)findViewById(R.id.searchChargeButton);
         searchChargeButton.setOnClickListener(new TextView.OnClickListener() {
 
@@ -73,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     }
 
     private long lastTimeBackPressed; //뒤로 두번 클릭시 앱 종료
@@ -82,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return;
         }
-        Toast.makeText(this, "'뒤로' 버튼을 한 번 더 눌러 종료합니다.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "한 번 더 누르면 로그인 페이지로 이동", Toast.LENGTH_SHORT).show();
         lastTimeBackPressed=System.currentTimeMillis();
     }
 }

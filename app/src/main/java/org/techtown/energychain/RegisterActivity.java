@@ -16,8 +16,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        spinner = (Spinner)findViewById(R.id.OrgSpinner);
-        adapter = ArrayAdapter.createFromResource(this, R.array.Org, android.R.layout.simple_spinner_dropdown_item);
+        spinner = (Spinner)findViewById(R.id.regi_bank_data);
+        adapter = ArrayAdapter.createFromResource(this, R.array.Org, android.R.layout.simple_spinner_dropdown_item); //R.array.bank로 수정
         spinner.setAdapter(adapter);
     }
 }

@@ -18,6 +18,7 @@ public class Purchase extends AppCompatActivity {
         final Button purchaseButton = (Button)findViewById(R.id.purchaseButton);
         final Button saleButton = (Button)findViewById(R.id.saleButton);
         final Button mydataButton = (Button)findViewById(R.id.mydataButton);
+        final Button TokenchargeButton = (Button)findViewById(R.id.TokenchargeButton);
 
 
         energymainButton.setOnClickListener(new View.OnClickListener() {
@@ -54,5 +55,14 @@ public class Purchase extends AppCompatActivity {
                 startActivity(mainIntent);
             }
         });
+
+        TokenchargeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mainIntent = new Intent(Purchase.this, charge_recharge.class);
+                startActivity(mainIntent);
+            }
+        });
+
     }
 }

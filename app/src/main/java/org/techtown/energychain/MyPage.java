@@ -71,7 +71,7 @@ public class MyPage extends AppCompatActivity {
         NoticeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(MyPage.this, charge_recharge.class); //공지사항
+                Intent mainIntent = new Intent(MyPage.this, Notice.class); //공지사항
                 startActivity(mainIntent);
             }});
 

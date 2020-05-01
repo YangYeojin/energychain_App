@@ -71,6 +71,14 @@
 
 
             </LinearLayout>
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="공백 또는 특수문자(@#$%)가 포함된 아이디는 사용할 수 없습니다."
+                android:paddingTop="2dp"
+                android:textSize="10sp"/>
+
 
 
             <EditText
@@ -183,6 +191,7 @@
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:inputType="number"
                     android:ems="10"/>
             </LinearLayout>
 

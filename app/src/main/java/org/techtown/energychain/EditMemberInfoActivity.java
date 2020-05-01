@@ -5,12 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.Spinner;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -80,7 +76,7 @@ public class EditMemberInfoActivity extends AppCompatActivity {
     public void onEditButtonClicked(View v) {
         EditText eif_pw_EditText = (EditText)findViewById(R.id.eif_pw_EditText);
         EditText eif_pwcheck_editText = (EditText)findViewById(R.id.eif_pwcheck_editText);
-        EditText eif_EmailText = (EditText) findViewById(R.id.eif_EmailText);
+        EditText eif_EmailText = (EditText) findViewById(R.id.emailText);
 
         String eif_pw_String, eif_pwcheck_String, eif_Email_String;
 

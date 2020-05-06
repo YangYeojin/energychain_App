@@ -101,14 +101,6 @@
                 android:text="회원가입"
                 android:id="@+id/registerButton"/>
 
-            <TextView
-                android:id="@+id/mainACTButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:text="메인"
-                android:textSize="18dp" />
 
         </LinearLayout>
 

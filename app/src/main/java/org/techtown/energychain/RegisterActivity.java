@@ -74,6 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
         EditText regi_name_date = (EditText)findViewById(R.id.regi_name_date);
         EditText regi_phonenumber_data = (EditText)findViewById(R.id.regi_phonenumber_data);
         EditText regi_number_data = (EditText)findViewById(R.id.regi_number_data);
+        EditText regi_car_data = (EditText)findViewById(R.id.regi_car_data);
         Spinner regi_bank_data = (Spinner) findViewById(R.id.regi_bank_data);
         EditText regi_account_data = (EditText)findViewById(R.id.regi_account_data);
 
@@ -83,10 +84,11 @@ public class RegisterActivity extends AppCompatActivity {
         final String regi_name_date_String = regi_name_date.getText().toString();
         final String regi_phonenumber_data_String = regi_phonenumber_data.getText().toString();
         final String regi_number_data_String = regi_number_data.getText().toString();
+        final String regi_car_data_String = regi_car_data.getText().toString(); // 수정
         final String regi_bank_data_String = regi_bank_data.getSelectedItem().toString();
         final String regi_account_data_String = regi_account_data.getText().toString();
 
-        if(idText_String.equals("")||passwordText_String.equals("")||emailText_String.equals("")||regi_name_date_String.equals("")||regi_phonenumber_data_String.equals("")||regi_number_data_String.equals("")||regi_bank_data_String.equals("")||regi_account_data_String.equals("")) {
+        if(idText_String.equals("")||passwordText_String.equals("")||emailText_String.equals("")||regi_name_date_String.equals("")||regi_phonenumber_data_String.equals("")||regi_number_data_String.equals("")||regi_car_data_String.equals("")||regi_bank_data_String.equals("")||regi_account_data_String.equals("")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
             dialog = builder.setMessage("빈칸 없이 입력해주세요.").setNegativeButton("확인", null).create();
             dialog.show();
@@ -120,14 +122,18 @@ public class RegisterActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(
                 Request.Method.POST, url,
                 new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                    dialog = builder.setMessage("회원 등록에 성공했습니다.").setPositiveButton("확인",null).create();
-                    dialog.show();
-                    finish();
-                }
-            }, new Response.ErrorListener() {
+                    @Override
+                    public void onResponse(String response) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                        dialog = builder.setMessage("회원 등록에 성공했습니다.").setPositiveButton("확인",null).create();
+                        dialog.show();
+                        finish();
+                    }
+
+                    }, new Response.ErrorListener() {
+
+
+
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
@@ -150,6 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
                 params.put("residentnum", regi_number_data_String);
                 params.put("bank", regi_bank_data_String);
                 params.put("banknum", regi_account_data_String);
+                params.put("carnum", regi_car_data_String);
                 return params;
             }
         };

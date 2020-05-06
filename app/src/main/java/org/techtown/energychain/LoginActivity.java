@@ -36,7 +36,7 @@ import java.util.SimpleTimeZone;
 
 public class LoginActivity extends AppCompatActivity{
 
-    String id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server;     // # 05.02
+    String id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server, carnum_server;     // # 05.02
     // 로그인 실패를 알리기 위한 창을 위해 AlterDialog 선언
     private AlertDialog dialog;
 
@@ -56,16 +56,7 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
-        TextView mainACTButton = (TextView)findViewById(R.id.mainACTButton);
-        mainACTButton.setOnClickListener(new TextView.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(mainIntent);
-                //LoginActivity.this.startActivity(mainIntent);
-            }
-        });
 
         // yeojin start
         // * 로그인 버튼 선언
@@ -89,43 +80,52 @@ public class LoginActivity extends AppCompatActivity{
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        String response_dummy = response.replaceAll("\\\\","");
-                        response = response_dummy.substring(1, response_dummy.length()-1);
-                        JsonParser jsonParser = new JsonParser();
-                        JsonElement jsonElement = jsonParser.parse(response);
-                        // # 05.02 start
-                        id_server = jsonElement.getAsJsonObject().get("id").getAsString();
-                        pw_server = jsonElement.getAsJsonObject().get("pw").getAsString();
-                        name_server = jsonElement.getAsJsonObject().get("name").getAsString();
-                        ph_server = jsonElement.getAsJsonObject().get("ph").getAsString();
-                        email_server = jsonElement.getAsJsonObject().get("email").getAsString();
-                        residentnum_server = jsonElement.getAsJsonObject().get("residentnum").getAsString();
-                        bank_server = jsonElement.getAsJsonObject().get("bank").getAsString();
-                        banknum_server = jsonElement.getAsJsonObject().get("banknum").getAsString();
+                        try{
+                            String response_dummy = response.replaceAll("\\\\","");
+                            response = response_dummy.substring(1, response_dummy.length()-1);
+                            JsonParser jsonParser = new JsonParser();
+                            JsonElement jsonElement = jsonParser.parse(response);
+                            // # 05.02 start
+                            id_server = jsonElement.getAsJsonObject().get("id").getAsString();
+                            pw_server = jsonElement.getAsJsonObject().get("pw").getAsString();
+                            name_server = jsonElement.getAsJsonObject().get("name").getAsString();
+                            ph_server = jsonElement.getAsJsonObject().get("ph").getAsString();
+                            email_server = jsonElement.getAsJsonObject().get("email").getAsString();
+                            residentnum_server = jsonElement.getAsJsonObject().get("residentnum").getAsString();
+                            bank_server = jsonElement.getAsJsonObject().get("bank").getAsString();
+                            banknum_server = jsonElement.getAsJsonObject().get("banknum").getAsString();
+                            carnum_server = jsonElement.getAsJsonObject().get("carnum").getAsString();
 
 
-                        // # 05.02 until here
+                            // # 05.02 until here
 
-                        try {
-                            if (id_server.equals(idText_String) && pw_server.equals(passwordText_String)){
+                            try {
+                                if (id_server.equals(idText_String) && pw_server.equals(passwordText_String)){
 
-                                Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
-                                mInFo data = new mInFo(id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server);
-                                mainIntent.putExtra("data", data);
-                                LoginActivity.this.startActivityForResult(mainIntent, 101);
+                                    Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                                    mInFo data = new mInFo(id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server, carnum_server);
+                                    mainIntent.putExtra("data", data);
+                                    LoginActivity.this.startActivityForResult(mainIntent, 101);
 
-                            } else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                                dialog = builder.setMessage("아이디와 비밀번호를 다시 확인해주세요.").setNegativeButton("확인", null).create();
-                                dialog.show();
+                                } else {
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                                    dialog = builder.setMessage("아이디와 비밀번호를 다시 확인해주세요.").setNegativeButton("확인", null).create();
+                                    dialog.show();
+                                }
+
+                            } catch (Exception e){
+                                e.printStackTrace();
                             }
-
                         } catch (Exception e){
                             e.printStackTrace();
+                            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                            dialog = builder.setMessage("아이디와 비밀번호를 다시 확인해주세요.").setNegativeButton("확인", null).create();
+                            dialog.show();
                         }
+
                     }
-                // couchDB로부터 어떠한 문서도 전달받지 못한 경우 : couchDB에 사용자가 입력한 id+pw가 key인 문서가 없는 경우
-                // 알림창에 로그인 실패를 알리고 아무것도 하지 않음
+                    // couchDB로부터 어떠한 문서도 전달받지 못한 경우 : couchDB에 사용자가 입력한 id+pw가 key인 문서가 없는 경우
+                    // 알림창에 로그인 실패를 알리고 아무것도 하지 않음
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity{
                 });
 
 
-               if(AppHelper.RequestQueue == null){
+                if(AppHelper.RequestQueue == null){
                     AppHelper.RequestQueue = Volley.newRequestQueue(getApplicationContext());
                 }
 

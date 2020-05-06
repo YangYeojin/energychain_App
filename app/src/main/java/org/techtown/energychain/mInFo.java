@@ -12,9 +12,10 @@ public class mInFo implements Parcelable {
     String residentnum_loggedIn;
     String bank_loggedIn;
     String banknum_loggedIn;
+    String carnum_loggedIn;
 
     // 생성자
-    public mInFo(String id_loggedIn, String pw_loggedIn, String name_loggedIn, String ph_loggedIn, String email_loggedIn, String residentnum_loggedIn, String bank_loggedIn, String banknum_loggedIn){
+    public mInFo(String id_loggedIn, String pw_loggedIn, String name_loggedIn, String ph_loggedIn, String email_loggedIn, String residentnum_loggedIn, String bank_loggedIn, String banknum_loggedIn, String carnum_loggedIn){
         this.id_loggedIn = id_loggedIn;
         this.pw_loggedIn = pw_loggedIn;
         this.name_loggedIn = name_loggedIn;
@@ -23,6 +24,7 @@ public class mInFo implements Parcelable {
         this.residentnum_loggedIn = residentnum_loggedIn;
         this.bank_loggedIn = bank_loggedIn;
         this.banknum_loggedIn = banknum_loggedIn;
+        this.carnum_loggedIn = banknum_loggedIn;
     }
 
     public mInFo(Parcel in) {
@@ -34,6 +36,7 @@ public class mInFo implements Parcelable {
         residentnum_loggedIn = in.readString();
         bank_loggedIn = in.readString();
         banknum_loggedIn = in.readString();
+        carnum_loggedIn = in.readString();
     }
 
     public static final Parcelable.Creator<mInFo> CREATOR = new Creator<mInFo>() {
@@ -63,5 +66,6 @@ public class mInFo implements Parcelable {
         dest.writeString(residentnum_loggedIn);
         dest.writeString(bank_loggedIn);
         dest.writeString(banknum_loggedIn);
+        dest.writeString(carnum_loggedIn);
     }
 }

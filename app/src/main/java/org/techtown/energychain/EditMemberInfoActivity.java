@@ -27,19 +27,37 @@ public class EditMemberInfoActivity extends AppCompatActivity {
         final Button saleButton = (Button)findViewById(R.id.saleButton);
         final Button mydataButton = (Button)findViewById(R.id.mydataButton);
 
+        // yeojin 05.03 01시
+        final Intent passedIntent = getIntent();
+        mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+
+        TextView eif_id_TextView = (TextView) findViewById(R.id.eif_id_TextView);
+        eif_id_TextView.setText(data.id_loggedIn);
+
+        TextView eif_name_TextView = (TextView) findViewById(R.id.eif_name_TextView);
+        eif_name_TextView.setText(data.name_loggedIn);
+
+        EditText eif_EmailText = (EditText) findViewById(R.id.eif_EmailText);
+        eif_EmailText.setHint(data.email_loggedIn);
+
+
         energymainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(EditMemberInfoActivity.this, MainActivity.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
         purchaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(EditMemberInfoActivity.this, Purchase.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), Purchase.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
@@ -48,8 +66,10 @@ public class EditMemberInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent mainIntent = new Intent(EditMemberInfoActivity.this, Sale.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), Sale.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
@@ -57,8 +77,10 @@ public class EditMemberInfoActivity extends AppCompatActivity {
         mydataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(EditMemberInfoActivity.this, MyPage.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), MyPage.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
@@ -66,9 +88,6 @@ public class EditMemberInfoActivity extends AppCompatActivity {
         adapter = ArrayAdapter.createFromResource(this, R.array.bank, android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
-        // output id from server
-        TextView eif_id_TextView;
-        eif_id_TextView = findViewById(R.id.eif_id_TextView);
         
     }
 

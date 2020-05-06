@@ -100,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        final String idText_String_f = idText_String + "@@"; //id, password 구분문자
+        final String idText_String_f = idText_String; //id, password 구분문자
 
         if(regi_phonenumber_data_String.length()!=11) {
 

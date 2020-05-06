@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MyPage extends AppCompatActivity {
@@ -31,20 +33,30 @@ public class MyPage extends AppCompatActivity {
         final Button saleButton = (Button)findViewById(R.id.saleButton);
         final Button mydataButton = (Button)findViewById(R.id.mydataButton);
 
+        // yeojin 05.03 01시
+        final Intent passedIntent = getIntent();
+        mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+        TextView editText_name = (TextView) findViewById(R.id.editText_name);
+        editText_name.setText(data.name_loggedIn);
+
 
         energymainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(MyPage.this, MainActivity.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
         purchaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(MyPage.this, Purchase.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), Purchase.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
@@ -53,8 +65,10 @@ public class MyPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent mainIntent = new Intent(MyPage.this, Sale.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), Sale.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
@@ -62,8 +76,10 @@ public class MyPage extends AppCompatActivity {
         mydataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(MyPage.this, MyPage.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), MyPage.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
@@ -78,8 +94,10 @@ public class MyPage extends AppCompatActivity {
         EditPersonalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(MyPage.this, EditMemberInfoActivity.class); // 개인정보수정
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), EditMemberInfoActivity.class); // 개인정보수정
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }});
 
         TransactionHistoryButton.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +113,7 @@ public class MyPage extends AppCompatActivity {
                 Intent mainIntent = new Intent(MyPage.this, charge_recharge.class);
                 startActivity(mainIntent);
             }});
-
     }
+
+
 }

@@ -25,20 +25,25 @@ public class MainActivity extends AppCompatActivity {
         final Button mydataButton = (Button)findViewById(R.id.mydataButton);
         final Button developerButton =(Button)findViewById(R.id.developerButton);
 
+        final Intent passedIntent = getIntent();
 
         energymainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
         purchaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(MainActivity.this, Purchase.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), Purchase.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
@@ -47,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent mainIntent = new Intent(MainActivity.this, Sale.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), Sale.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
@@ -56,8 +63,10 @@ public class MainActivity extends AppCompatActivity {
         mydataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(MainActivity.this, MyPage.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), MyPage.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
@@ -82,9 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
     }
+
 
     private long lastTimeBackPressed; //뒤로 두번 클릭시 앱 종료
     @Override

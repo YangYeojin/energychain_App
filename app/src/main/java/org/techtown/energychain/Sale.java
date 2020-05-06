@@ -19,20 +19,25 @@ public class Sale extends AppCompatActivity {
         final Button saleButton = (Button)findViewById(R.id.saleButton);
         final Button mydataButton = (Button)findViewById(R.id.mydataButton);
 
+        final Intent passedIntent = getIntent();
 
         energymainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(Sale.this, MainActivity.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
         purchaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(Sale.this, Purchase.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), Purchase.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
@@ -41,8 +46,10 @@ public class Sale extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent mainIntent = new Intent(Sale.this, Sale.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), Sale.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
@@ -50,8 +57,10 @@ public class Sale extends AppCompatActivity {
         mydataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mainIntent = new Intent(Sale.this, MyPage.class);
-                startActivity(mainIntent);
+                Intent mainIntent = new Intent(getApplicationContext(), MyPage.class);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                mainIntent.putExtra("data", data);
+                startActivityForResult(mainIntent, 101);
             }
         });
     }

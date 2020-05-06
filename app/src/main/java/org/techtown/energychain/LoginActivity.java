@@ -32,12 +32,13 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SimpleTimeZone;
 
 public class LoginActivity extends AppCompatActivity{
-    // yeojin start
+
+    String id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server;     // # 05.02
     // 로그인 실패를 알리기 위한 창을 위해 AlterDialog 선언
     private AlertDialog dialog;
-    // Until here
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,31 +74,45 @@ public class LoginActivity extends AppCompatActivity{
         // * 여기서부터 로그인 수행 : loginButton TextView를 클릭하면 로그인을 수행하기 위한 과정 시작
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v){
+            public void onClick(final View v){
                 // 사용자가 입력하는 로그인 정보가 들어가는 EditText 값을 받아서 String 형식으로 저장함
                 EditText idText = (EditText)findViewById(R.id.idText);
                 EditText passwordText = (EditText)findViewById(R.id.passwordText);
-                final String idText_String = idText.getText().toString()+"@@";
+                final String idText_String = idText.getText().toString();
                 final String passwordText_String = passwordText.getText().toString();
 
                 // * [회원정보 문서의 key : id+pw] URL에 진입해 id+pw를 key로 하여 value(원하는 회원정보 문서) 검색
                 // api(?)에서 get으로 된 로그인 전용 함수 없이 json 파일을 받아오는 프로세스를 도저히 모르겠어서 couchDB와 연결해 데이터를 받아오기로 함
                 // couchDB의 json 파일을 호출하기 위해서는 ip 주소와 couchDB의 port number(5984), Database 이름(mychannel_%24energy_network), 문서의 key 값이 필요함
                 // 회원정보가 들어가는 문서의 경우 key는 id+pw로 하기로 정했으므로 사용자가 로그인 화면의 EditText에 입력한 id와 pw를 주소에 붙여줌
-                String url = "http://210.115.182.155:5984/mychannel_%24energy_network/"+idText_String+passwordText_String;
+                String url = "http://210.115.182.155:3000/balanceOf/"+idText_String+"@@"+passwordText_String;
                 StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        String response_dummy = response.replaceAll("\\\\","");
+                        response = response_dummy.substring(1, response_dummy.length()-1);
                         JsonParser jsonParser = new JsonParser();
                         JsonElement jsonElement = jsonParser.parse(response);
-                        String id_server = jsonElement.getAsJsonObject().get("id").getAsString();
-                        String pw_server = jsonElement.getAsJsonObject().get("pw").getAsString();
+                        // # 05.02 start
+                        id_server = jsonElement.getAsJsonObject().get("id").getAsString();
+                        pw_server = jsonElement.getAsJsonObject().get("pw").getAsString();
+                        name_server = jsonElement.getAsJsonObject().get("name").getAsString();
+                        ph_server = jsonElement.getAsJsonObject().get("ph").getAsString();
+                        email_server = jsonElement.getAsJsonObject().get("email").getAsString();
+                        residentnum_server = jsonElement.getAsJsonObject().get("residentnum").getAsString();
+                        bank_server = jsonElement.getAsJsonObject().get("bank").getAsString();
+                        banknum_server = jsonElement.getAsJsonObject().get("banknum").getAsString();
+
+
+                        // # 05.02 until here
 
                         try {
                             if (id_server.equals(idText_String) && pw_server.equals(passwordText_String)){
 
-                                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                                LoginActivity.this.startActivity(mainIntent);
+                                Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                                mInFo data = new mInFo(id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server);
+                                mainIntent.putExtra("data", data);
+                                LoginActivity.this.startActivityForResult(mainIntent, 101);
 
                             } else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
@@ -133,6 +148,17 @@ public class LoginActivity extends AppCompatActivity{
 
     }
 
+
+    /*public void InitializeMemberInfo(){     // # 05.02
+        data.setId(id_server);
+        data.setPw(pw_server);
+        data.setName(name_server);
+        data.setPh(ph_server);
+        data.setEmail(email_server);
+        data.setResidentnum(residentnum_server);
+        data.setBank(bank_server);
+        data.setBanknum(banknum_server);
+    }*/
 
     @Override
     protected void onStop(){

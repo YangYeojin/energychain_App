@@ -74,6 +74,8 @@ public class EditMemberInfoActivity extends AppCompatActivity {
             }
         });
 
+
+
         purchaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,6 +155,13 @@ public class EditMemberInfoActivity extends AppCompatActivity {
         final String eif_bank_spinner_String = eif_bank_spinner.getSelectedItem().toString();
         final String eif_account_editText_String = eif_account_editText.getText().toString();
 
+        if (eif_pw_EditText_String.equals("")||eif_pwcheck_editText_String.equals("")) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(EditMemberInfoActivity.this);
+            dialog = builder.setMessage("변경할 비밀번호를 입력해주세요").setNegativeButton("확인", null).create();
+            dialog.show();
+            return;
+        }
+
 
         if (!(eif_pw_EditText_String.equals(eif_pwcheck_editText_String))) {
             AlertDialog.Builder builder = new AlertDialog.Builder(EditMemberInfoActivity.this);
@@ -162,16 +171,28 @@ public class EditMemberInfoActivity extends AppCompatActivity {
         }
 
 
+
         StringRequest request = new StringRequest(
                 Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(EditMemberInfoActivity.this);
-                        dialog = builder.setMessage("회원 등록에 성공했습니다.").setPositiveButton("확인", null).create();
-                        Toast.makeText(getApplicationContext(), "회원 등록에 성공했습니다.", Toast.LENGTH_SHORT).show();
-                        dialog.show();
-                        finish();
+                        dialog = builder.setMessage("정보 수정에 성공했습니다.").setPositiveButton("확인", null).create();
+                        Toast.makeText(getApplicationContext(), "정보 수정에 성공했습니다.", Toast.LENGTH_SHORT).show();
+
+                        final Intent passedIntent = getIntent();
+                        mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+
+                        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+
+                        mInFo Edit_data = new mInFo(data.id_loggedIn, eif_pw_EditText_String, data.name_loggedIn,eif_phonenumber_editText_String, eif_EmailText_String, data.residentnum_loggedIn, eif_bank_spinner_String, eif_account_editText_String, eif_car_editText_String);
+
+                        mainIntent.putExtra("data", Edit_data);
+                        Toast.makeText(getApplicationContext(), eif_phonenumber_editText_String, Toast.LENGTH_LONG).show();
+                        EditMemberInfoActivity.this.startActivityForResult(mainIntent, 101);
+
+                        //dialog.show();
                     }
 
                 }, new Response.ErrorListener() {
@@ -182,6 +203,8 @@ public class EditMemberInfoActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(EditMemberInfoActivity.this);
                 dialog = builder.setMessage("회원 등록에 실패했습니다.").setNegativeButton("확인", null).create();
                 Toast.makeText(getApplicationContext(), "회원 등록에 실패했습니다.", Toast.LENGTH_SHORT).show();
+
+
                 dialog.show();
 
 

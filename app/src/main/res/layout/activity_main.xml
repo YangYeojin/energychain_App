@@ -107,9 +107,11 @@
                             android:textSize="20dp"
                             android:textStyle="bold" />
 
-                        <LinearLayout
+                        <TextView
+                            android:id="@+id/main_kw"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
+                            android:gravity="center"
                             android:layout_marginLeft="7dp" />
 
                     </LinearLayout>

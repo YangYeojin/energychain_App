@@ -36,6 +36,7 @@ public class MyPage extends AppCompatActivity {
         // yeojin 05.03 01시
         final Intent passedIntent = getIntent();
         mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+
         TextView editText_name = (TextView) findViewById(R.id.editText_name);
         editText_name.setText(data.name_loggedIn);
 

@@ -36,7 +36,10 @@ import java.util.SimpleTimeZone;
 
 public class LoginActivity extends AppCompatActivity{
 
-    String id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server, carnum_server;     // # 05.02
+    String id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server, carnum_server;
+    String kw_server;
+
+    // # 05.02
     // 로그인 실패를 알리기 위한 창을 위해 AlterDialog 선언
     private AlertDialog dialog;
 
@@ -71,6 +74,34 @@ public class LoginActivity extends AppCompatActivity{
                 EditText passwordText = (EditText)findViewById(R.id.passwordText);
                 final String idText_String = idText.getText().toString();
                 final String passwordText_String = passwordText.getText().toString();
+
+                //kw알기위한 접속 ??
+                String kwurl = "http://210.115.182.155:3000/balanceOf/Cost";
+                StringRequest kw_stringRequest = new StringRequest(Request.Method.GET, kwurl, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String kw_response) {
+                        String response_dummy = kw_response.replaceAll("\\\\", "");
+                        kw_response = response_dummy.substring(1, response_dummy.length()-1);
+                        kw_server = kw_response;
+
+
+                        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        kwInFo kw_data = new kwInFo(kw_server);
+
+                        mainIntent.putExtra("kw_data", kw_data);
+                        LoginActivity.this.startActivityForResult(mainIntent, 101);
+
+
+                    }
+                },new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+                //여기까지
+
 
                 // * [회원정보 문서의 key : id+pw] URL에 진입해 id+pw를 key로 하여 value(원하는 회원정보 문서) 검색
                 // api(?)에서 get으로 된 로그인 전용 함수 없이 json 파일을 받아오는 프로세스를 도저히 모르겠어서 couchDB와 연결해 데이터를 받아오기로 함
@@ -135,7 +166,6 @@ public class LoginActivity extends AppCompatActivity{
                     }
                 });
 
-
                 if(AppHelper.RequestQueue == null){
                     AppHelper.RequestQueue = Volley.newRequestQueue(getApplicationContext());
                 }
@@ -143,6 +173,13 @@ public class LoginActivity extends AppCompatActivity{
 
                 stringRequest.setShouldCache(false);
                 AppHelper.RequestQueue.add(stringRequest);
+
+                kw_stringRequest.setShouldCache(false);
+                AppHelper.RequestQueue.add(kw_stringRequest);
+
+
+
+
             }
         });
 

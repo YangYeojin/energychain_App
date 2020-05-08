@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,12 +28,21 @@ public class MainActivity extends AppCompatActivity {
 
         final Intent passedIntent = getIntent();
 
+        final Intent kw_Intent = getIntent();
+        kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
+
+        TextView main_kw = (TextView) findViewById(R.id.main_kw);
+        main_kw.setText(kw_data.kw_loggedIn);
+
+
         energymainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -42,8 +52,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), Purchase.class);
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
                 startActivityForResult(mainIntent, 101);
+
+
             }
         });
 
@@ -54,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent mainIntent = new Intent(getApplicationContext(), Sale.class);
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -65,7 +81,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), MyPage.class);
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });

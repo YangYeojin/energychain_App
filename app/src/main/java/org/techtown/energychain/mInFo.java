@@ -14,6 +14,7 @@ public class mInFo implements Parcelable {
     String banknum_loggedIn;
     String carnum_loggedIn;
 
+
     // 생성자
     public mInFo(String id_loggedIn, String pw_loggedIn, String name_loggedIn, String ph_loggedIn, String email_loggedIn, String residentnum_loggedIn, String bank_loggedIn, String banknum_loggedIn, String carnum_loggedIn){
         this.id_loggedIn = id_loggedIn;
@@ -24,7 +25,7 @@ public class mInFo implements Parcelable {
         this.residentnum_loggedIn = residentnum_loggedIn;
         this.bank_loggedIn = bank_loggedIn;
         this.banknum_loggedIn = banknum_loggedIn;
-        this.carnum_loggedIn = banknum_loggedIn;
+        this.carnum_loggedIn = carnum_loggedIn;
     }
 
     public mInFo(Parcel in) {

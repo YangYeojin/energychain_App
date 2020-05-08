@@ -39,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ArrayAdapter adapter;
     private Spinner spinner;
     private AlertDialog dialog;
-
+    int id_check_OK= 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +49,13 @@ public class RegisterActivity extends AppCompatActivity {
         adapter = ArrayAdapter.createFromResource(this, R.array.bank, android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
+        final Button validataButton =(Button)findViewById(R.id.validateButton);
+        validataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                idcheckRequest();
+            }
+        });
 
         //yeojin 0429 edit
         final Button registerButton = (Button)findViewById(R.id.registerButton);
@@ -64,9 +71,75 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    public void sendRequest(){
-        final String url = "http://210.115.182.155:3000/SignUp";
+    //중복체크
+    public void idcheckRequest() {
+        EditText idText = (EditText) findViewById(R.id.idText);
+        final String idText_String = idText.getText().toString();
+        final String checkURL = "http://210.115.182.155:3000/balanceOf/" + idText_String;
 
+        if (idText_String.equals("")) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+            dialog = builder.setMessage("아이디는 빈 칸일 수 없습니다.").setPositiveButton("확인", null).create();
+            dialog.show();
+            return;
+        }
+
+        if (idText_String.contains("@") || idText_String.contains("#") || idText_String.contains("$") || idText_String.contains("%")) { //아이디 특수문자 제한
+            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+            dialog = builder.setMessage("공백 또는 특수문자(@#$%)가 포함된 아이디는 사용할 수 없습니다.").setNegativeButton("확인", null).create();
+            dialog.show();
+            return;
+        }
+
+        //여기부터
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, checkURL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String response_dummy = response.replaceAll("\\\\", "");
+                response = response_dummy.substring(1, response_dummy.length()-1);
+
+                if (!(response.equals(""))) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                    dialog = builder.setMessage("중복된 아이디입니다. 다른 아이디를 입력해주세요.").setPositiveButton("확인", null).create();
+                    dialog.show();
+                    return;
+                }else{
+                    id_check_OK=1;
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                    dialog = builder.setMessage("사용가능한 아이디입니다.").setPositiveButton("확인", null).create();
+                    dialog.show();
+                    //수정못하게하는 알고리즘
+                }
+                //response가 "0"이면 데이터 있음 -> dialog로 메시지 출력후 다시 register로 가져오기
+                // 중복체크 했는지 따지고 회원가입되도록 하기
+                //만약 id값 체크 완료 되었으면 못바꾸도록 하기
+
+             }
+        },new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        if(AppHelper.RequestQueue == null){
+            AppHelper.RequestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
+
+
+        stringRequest.setShouldCache(false);
+        AppHelper.RequestQueue.add(stringRequest);
+    }
+
+
+            //여기까지
+
+
+
+    //회원가입
+    public void sendRequest(){
+
+        final String url = "http://210.115.182.155:3000/SignUp";
         // 변수 선언
         EditText idText = (EditText)findViewById(R.id.idText);
         EditText passwordText = (EditText)findViewById(R.id.passwordText);
@@ -95,17 +168,27 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        if(idText_String.contains("@")||idText_String.contains("#")||idText_String.contains("$")||idText_String.contains("%")) { //아이디 특수문자 제한
+
+        final String idText_String_f = idText_String; //id, password 구분문자
+
+
+        if (idText_String.contains("@") || idText_String.contains("#") || idText_String.contains("$") || idText_String.contains("%")) { //아이디 특수문자 제한
             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
             dialog = builder.setMessage("공백 또는 특수문자(@#$%)가 포함된 아이디는 사용할 수 없습니다.").setNegativeButton("확인", null).create();
             dialog.show();
             return;
         }
 
-        final String idText_String_f = idText_String; //id, password 구분문자
+
+        if(id_check_OK != 1) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+            dialog = builder.setMessage("아이디 중복체크를 해주세요.").setNegativeButton("확인", null).create();
+            dialog.show();
+            return;
+        }
+
 
         if(regi_phonenumber_data_String.length()!=11) {
-
             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
             dialog = builder.setMessage("전화번호는 총 11자리입니다.").setNegativeButton("확인", null).create();
             dialog.show();
@@ -119,6 +202,11 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
+
+
+
+
+
         StringRequest request = new StringRequest(
                 Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -127,7 +215,6 @@ public class RegisterActivity extends AppCompatActivity {
                         AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                         dialog = builder.setMessage("회원 등록에 성공했습니다.").setPositiveButton("확인",null).create();
                         dialog.show();
-                        finish();
                     }
 
                     }, new Response.ErrorListener() {
@@ -139,6 +226,7 @@ public class RegisterActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                     dialog = builder.setMessage("회원 등록에 실패했습니다.").setNegativeButton("확인",null).create();
                     dialog.show();
+                    finish();
 
 
 

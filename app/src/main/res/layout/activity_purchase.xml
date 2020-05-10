@@ -160,12 +160,23 @@
                 </TextView>
 
                 <EditText
-                    android:layout_width="200dp"
+                    android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:id="@+id/purchaseCount">
                 </EditText>
+
+                <Button
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:text="kW"
+                    android:onClick="purchase_kwButton_Click"
+                    android:id="@+id/purchase_kwButton"/>
+
+
             </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -182,12 +193,13 @@
                     android:textStyle="bold">
                 </TextView>
 
-                <EditText
+                <TextView
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
-                    android:id="@+id/needToken">
-                </EditText>
+                    android:layout_gravity="center"
+                    android:id="@+id/purchase_needtoken">
+                </TextView>
             </LinearLayout>
 
             <LinearLayout
@@ -205,13 +217,16 @@
                     android:textStyle="bold">
                 </TextView>
 
-                <EditText
+                <TextView
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
-                    android:id="@+id/myToken">
-                </EditText>
+                    android:layout_gravity="center"
+                    android:id="@+id/purchase_mytoken">
+                </TextView>
             </LinearLayout>
+
+
 
 
 

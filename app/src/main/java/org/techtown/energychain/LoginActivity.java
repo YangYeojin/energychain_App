@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity{
 
     String id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server, carnum_server;
     String kw_server;
+    String mytoken_server;
+
 
     // # 05.02
     // 로그인 실패를 알리기 위한 창을 위해 AlterDialog 선언
@@ -65,7 +67,6 @@ public class LoginActivity extends AppCompatActivity{
         // * 로그인 버튼 선언
         // 참고 : 나는 통일감있게 loginButton을 TextView로 변경함
         final Button loginButton = (Button) findViewById(R.id.loginButton);
-        // * 여기서부터 로그인 수행 : loginButton TextView를 클릭하면 로그인을 수행하기 위한 과정 시작
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(final View v){
@@ -75,7 +76,26 @@ public class LoginActivity extends AppCompatActivity{
                 final String idText_String = idText.getText().toString();
                 final String passwordText_String = passwordText.getText().toString();
 
-                //kw알기위한 접속 ??
+
+                //보유토큰 알기위한 접속
+
+                String mytokenurl = "http://210.115.182.155:3000/balanceOf/"+idText_String;
+                StringRequest mytoken_stringRequest = new StringRequest(Request.Method.GET, mytokenurl, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String mytoken_response) {
+                        String dummy = mytoken_response.replace("\\\\", "");
+                        mytoken_response = dummy.substring(1, dummy.length() - 1);
+                        mytoken_server = mytoken_response;
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                });
+
+                //kw알기위한 접속
                 String kwurl = "http://210.115.182.155:3000/balanceOf/Cost";
                 StringRequest kw_stringRequest = new StringRequest(Request.Method.GET, kwurl, new Response.Listener<String>() {
                     @Override
@@ -84,23 +104,21 @@ public class LoginActivity extends AppCompatActivity{
                         kw_response = response_dummy.substring(1, response_dummy.length()-1);
                         kw_server = kw_response;
 
-
-                        Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
-                        kwInFo kw_data = new kwInFo(kw_server);
-
-                        mainIntent.putExtra("kw_data", kw_data);
-                        LoginActivity.this.startActivityForResult(mainIntent, 101);
-
-
                     }
                 },new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
+
                     }
                 });
 
                 //여기까지
+
+
+
+
+
 
 
                 // * [회원정보 문서의 key : id+pw] URL에 진입해 id+pw를 key로 하여 value(원하는 회원정보 문서) 검색
@@ -135,7 +153,12 @@ public class LoginActivity extends AppCompatActivity{
 
                                     Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
                                     mInFo data = new mInFo(id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server, carnum_server);
+                                    kwInFo kw_data = new kwInFo(kw_server);
+                                    mytokenInFo mytoken_data = new mytokenInFo(mytoken_server);
+
                                     mainIntent.putExtra("data", data);
+                                    mainIntent.putExtra("kw_data", kw_data);
+                                    mainIntent.putExtra("mytoken_data", mytoken_data);
                                     LoginActivity.this.startActivityForResult(mainIntent, 101);
 
                                 } else {
@@ -166,6 +189,9 @@ public class LoginActivity extends AppCompatActivity{
                     }
                 });
 
+
+
+
                 if(AppHelper.RequestQueue == null){
                     AppHelper.RequestQueue = Volley.newRequestQueue(getApplicationContext());
                 }
@@ -177,7 +203,8 @@ public class LoginActivity extends AppCompatActivity{
                 kw_stringRequest.setShouldCache(false);
                 AppHelper.RequestQueue.add(kw_stringRequest);
 
-
+                mytoken_stringRequest.setShouldCache(false);
+                AppHelper.RequestQueue.add(mytoken_stringRequest);
 
 
             }

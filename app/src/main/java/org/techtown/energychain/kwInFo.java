@@ -6,8 +6,8 @@ import android.os.Parcelable;
 public class kwInFo implements Parcelable {
     String kw_loggedIn;
 
-    public kwInFo(String kw){
-        this.kw_loggedIn = kw;
+    public kwInFo(String kw_loggedIn){
+        this.kw_loggedIn = kw_loggedIn;
     }
 
     public kwInFo(Parcel in){

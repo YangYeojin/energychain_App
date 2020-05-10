@@ -187,8 +187,8 @@ public class EditMemberInfoActivity extends AppCompatActivity {
                         Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
 
                         mInFo Edit_data = new mInFo(data.id_loggedIn, eif_pw_EditText_String, data.name_loggedIn,eif_phonenumber_editText_String, eif_EmailText_String, data.residentnum_loggedIn, eif_bank_spinner_String, eif_account_editText_String, eif_car_editText_String);
-
                         mainIntent.putExtra("data", Edit_data);
+
                         Toast.makeText(getApplicationContext(), eif_phonenumber_editText_String, Toast.LENGTH_LONG).show();
                         EditMemberInfoActivity.this.startActivityForResult(mainIntent, 101);
 

@@ -36,9 +36,10 @@ public class MyPage extends AppCompatActivity {
         // yeojin 05.03 01시
         final Intent passedIntent = getIntent();
         mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
-
         TextView editText_name = (TextView) findViewById(R.id.editText_name);
         editText_name.setText(data.name_loggedIn);
+
+        final Intent kw_Intent = getIntent();
 
 
         energymainButton.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +47,9 @@ public class MyPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -56,7 +59,9 @@ public class MyPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), Purchase.class);
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -68,7 +73,9 @@ public class MyPage extends AppCompatActivity {
 
                 Intent mainIntent = new Intent(getApplicationContext(), Sale.class);
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -79,7 +86,9 @@ public class MyPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), MyPage.class);
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -97,7 +106,9 @@ public class MyPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), EditMemberInfoActivity.class); // 개인정보수정
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
                 startActivityForResult(mainIntent, 101);
             }});
 

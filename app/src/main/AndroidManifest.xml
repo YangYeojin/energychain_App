@@ -19,6 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
+
         <activity android:name=".TransactionHistory"></activity>
         <activity android:name=".developer" />
         <activity android:name=".Notice" />
@@ -37,8 +38,8 @@
         <activity
             android:name=".searchCharge"
             android:label="@string/title_activity_search_charge" />
-        <activity android:name=".tokenmanagement" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".tokenmanagement" />
         <activity android:name=".Car_Register" />
         <activity android:name=".Purchase" />
         <activity android:name=".MyPage" />
@@ -46,8 +47,9 @@
         <activity android:name=".Sale" />
         <activity android:name=".charge_recharge" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity">
 
+
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

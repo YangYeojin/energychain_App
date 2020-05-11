@@ -161,6 +161,7 @@ public class MyPage extends AppCompatActivity {
                 mainIntent.putExtra("mytoken_data", mytoken_data);
                 startActivityForResult(mainIntent, 101);
             }});
+
     }
 
 

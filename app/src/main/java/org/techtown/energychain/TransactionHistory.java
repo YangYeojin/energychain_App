@@ -44,7 +44,7 @@ public class TransactionHistory extends AppCompatActivity {
         list.setAdapter(adapter);
 
         data.add("판매    2020.04.24  W_Station   200Token");
-        data.add("구매    2020.04.24  KB_Bank   200Token");
+        data.add("구매    2020.04.24  KB_Bank   200Token"); //공부하기
         data.add("위 예시처럼..여기 받아오기");
         adapter.notifyDataSetChanged();
 

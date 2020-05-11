@@ -149,7 +149,7 @@ public class Purchase extends AppCompatActivity {
         EditText purchaseCount = (EditText) findViewById(R.id.purchaseCount);
         TextView purchase_needtoken = (TextView) findViewById(R.id.purchase_needtoken);
         if (purchaseCount.getText().toString().matches("")){
-            Toast.makeText(getApplicationContext(), "kW을 입력하세요.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "구매할 kW을 입력하세요.", Toast.LENGTH_SHORT).show();
         } else {
             int n1 = Integer.parseInt(purchaseCount.getText().toString());
             int n2 = 1000;
@@ -191,7 +191,7 @@ public class Purchase extends AppCompatActivity {
 
                         mytokenInFo mytoken_data = (mytokenInFo)mytokenIntent.getParcelableExtra("mytoken_data");
 
-                        int result_kw = Integer.parseInt(purchase_kw)+ Integer.parseInt(mytoken_data.mytoken_loggedIn);
+                        int result_kw =  Integer.parseInt(mytoken_data.mytoken_loggedIn) - Integer.parseInt(purchase_kw);
 
                         Intent mainIntent = new Intent(getApplicationContext(), Purchase.class);
                         mytokenInFo E_mytoken_data = new mytokenInFo(Integer.toString(result_kw));

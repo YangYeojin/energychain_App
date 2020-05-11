@@ -41,6 +41,9 @@ public class EditMemberInfoActivity extends AppCompatActivity {
 
         // yeojin 05.03 01시
         final Intent passedIntent = getIntent();
+        final Intent kw_Intent = getIntent();
+        final Intent mytoken_Intent = getIntent();
+
         mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
 
         TextView eif_id_TextView = (TextView) findViewById(R.id.eif_id_TextView);
@@ -68,8 +71,13 @@ public class EditMemberInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
-                mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
+                mainIntent.putExtra("mytoken_data", mytoken_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -80,8 +88,13 @@ public class EditMemberInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), Purchase.class);
-                mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
+                mainIntent.putExtra("mytoken_data", mytoken_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -92,8 +105,13 @@ public class EditMemberInfoActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent mainIntent = new Intent(getApplicationContext(), Sale.class);
-                mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
+                mainIntent.putExtra("mytoken_data", mytoken_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -103,8 +121,13 @@ public class EditMemberInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), MyPage.class);
-                mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+
                 mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
+                mainIntent.putExtra("mytoken_data", mytoken_data);
                 startActivityForResult(mainIntent, 101);
             }
         });

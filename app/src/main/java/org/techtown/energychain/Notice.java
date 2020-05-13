@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Notice extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class Notice extends AppCompatActivity {
         final Intent passedIntent = getIntent();
         final Intent kw_Intent = getIntent();
         final Intent mytoken_Intent = getIntent();
+        final Intent mykw_Intent = getIntent();
 
         energymainButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,10 +32,12 @@ public class Notice extends AppCompatActivity {
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                 kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -45,10 +49,12 @@ public class Notice extends AppCompatActivity {
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                 kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -61,10 +67,12 @@ public class Notice extends AppCompatActivity {
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                 kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -77,10 +85,12 @@ public class Notice extends AppCompatActivity {
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                 kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });

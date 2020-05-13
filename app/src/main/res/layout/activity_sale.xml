@@ -128,7 +128,9 @@
                         android:textSize="20dp"
                         android:textStyle="bold" />
 
-                    <LinearLayout
+                    <TextView
+                        android:gravity="center"
+                        android:id="@+id/sale_mykw"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginLeft="7dp" />
@@ -193,7 +195,7 @@
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:id="@+id/profitForSale">
                 </TextView>
             </LinearLayout>
@@ -217,7 +219,7 @@
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:id="@+id/sale_mytoken">
                 </TextView>
             </LinearLayout>

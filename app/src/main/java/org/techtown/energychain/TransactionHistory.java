@@ -20,15 +20,31 @@ public class TransactionHistory extends AppCompatActivity {
 
     private TextView textView_Date;
     private DatePickerDialog.OnDateSetListener callbackMethod;
-    private ListView list;
+    private ListView historylist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaction_history);
 
-        this.InitializeView();
-        this.InitializeListener();
+        final Intent passedIntent = getIntent();
+        mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+        TextView PrintMemberName = (TextView) findViewById(R.id.PrintMemberName);
+        PrintMemberName.setText(data.name_loggedIn);
+
+
+        final Intent kw_Intent = getIntent();
+
+
+        final Intent mytoken_Intent = getIntent();
+        mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+        TextView PrintTokenAmount =(TextView)findViewById(R.id.PrintTokenAmount);
+        PrintTokenAmount.setText(mytoken_data.mytoken_loggedIn);
+
+
+
+        //this.InitializeView();
+        //this.InitializeListener();
 
         final Button energymainButton = (Button)findViewById(R.id.energymainButton);
         final Button purchaseButton = (Button)findViewById(R.id.purchaseButton);
@@ -36,16 +52,16 @@ public class TransactionHistory extends AppCompatActivity {
         final Button mydataButton = (Button)findViewById(R.id.mydataButton);
 
 
-        list = (ListView)findViewById(R.id.list);
+        historylist = (ListView)findViewById(R.id.historylist);
 
-        List<String> data = new ArrayList<>();
+        List<String> historydata = new ArrayList<>();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,data);
-        list.setAdapter(adapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,historydata);
+        historylist.setAdapter(adapter);
 
-        data.add("판매    2020.04.24  W_Station   200Token");
-        data.add("구매    2020.04.24  KB_Bank   200Token"); //공부하기
-        data.add("위 예시처럼..여기 받아오기");
+        historydata.add("판매    2020.04.24  W_Station   200Token");
+        historydata.add("구매    2020.04.24  KB_Bank   200Token"); //공부하기
+        historydata.add("위 예시처럼..여기 받아오기");
         adapter.notifyDataSetChanged();
 
 
@@ -88,29 +104,8 @@ public class TransactionHistory extends AppCompatActivity {
     }
 
 
-    public void InitializeView()
-    {
-        textView_Date = (TextView)findViewById(R.id.textView_date);
-    }
 
-    public void InitializeListener()
-    {
-        callbackMethod = new DatePickerDialog.OnDateSetListener()
-        {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
-            {
-                textView_Date.setText(year + "년" + monthOfYear + "월" + dayOfMonth + "일");
-            }
-        };
-    }
 
-    public void OnClickHandler(View view)
-    {
-        DatePickerDialog dialog = new DatePickerDialog(this, callbackMethod, 2020, 4, 24);
-
-        dialog.show();
-    }
 
 
 

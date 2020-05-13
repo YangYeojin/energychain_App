@@ -24,7 +24,9 @@ import java.util.Map;
 public class Sale extends AppCompatActivity {
 
     String sale_kw;
+    String sale_token;
     private AlertDialog dialog;
+    String KW_Cost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,11 +44,18 @@ public class Sale extends AppCompatActivity {
         kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
         TextView sale_kw = (TextView) findViewById(R.id.sale_kw);
         sale_kw.setText(kw_data.kw_loggedIn);
+        KW_Cost=kw_data.kw_loggedIn;
 
         final Intent mytoken_Intent = getIntent();
         mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
         TextView sale_mytoken =(TextView)findViewById(R.id.sale_mytoken);
         sale_mytoken.setText(mytoken_data.mytoken_loggedIn);
+
+        final Intent mykw_Intent = getIntent();
+        mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
+        TextView sale_mykw = (TextView) findViewById(R.id.sale_mykw);
+        sale_mykw.setText(mykw_data.mykw_loggedIn);
+
 
 
         final Button tokensaleButton = (Button)findViewById(R.id.tokensaleButton);
@@ -64,10 +73,12 @@ public class Sale extends AppCompatActivity {
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                 kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -79,10 +90,12 @@ public class Sale extends AppCompatActivity {
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                 kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -96,10 +109,12 @@ public class Sale extends AppCompatActivity {
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                 kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -112,10 +127,12 @@ public class Sale extends AppCompatActivity {
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                 kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -133,8 +150,9 @@ public class Sale extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "필요한 kW을 입력하세요.", Toast.LENGTH_SHORT).show();
         } else {
             int n1 = Integer.parseInt(saleCount.getText().toString());
-            int n2 = 1000;
-            sale_kw = Integer.toString(n1*n2);
+            int n2 = Integer.parseInt(KW_Cost);
+            sale_token = Integer.toString(n1*n2);
+            sale_kw = Integer.toString(n1);
             profitForSale.setText(Integer.toString(n1*n2));
         }
     }
@@ -149,8 +167,8 @@ public class Sale extends AppCompatActivity {
         mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
 
 
-        final String caller_id = data.id_loggedIn; //뒤에서 붙이기
-        final String recipient_id = "Wstation";
+        final String caller_id = "Wstation"; //뒤에서 붙이기
+        final String recipient_id = data.id_loggedIn;
         final String location = "location";
         final String transferAmount = sale_kw;
 
@@ -167,14 +185,17 @@ public class Sale extends AppCompatActivity {
                         final Intent passedIntent = getIntent();
                         final Intent kw_Intent = getIntent();
                         final Intent mytokenIntent = getIntent();
+                        final Intent mykw_Intent = getIntent();
 
                         mytokenInFo mytoken_data = (mytokenInFo)mytokenIntent.getParcelableExtra("mytoken_data");
+                        mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
-                        int result_kw = Integer.parseInt(mytoken_data.mytoken_loggedIn) + Integer.parseInt(sale_kw);
+                        int result_token = Integer.parseInt(mytoken_data.mytoken_loggedIn) + Integer.parseInt(sale_token);
+                        Float result_kw = Float.parseFloat(mykw_data.mykw_loggedIn) -  Float.parseFloat(sale_kw); //여기
 
                         Intent mainIntent = new Intent(getApplicationContext(), Sale.class);
-                        mytokenInFo E_mytoken_data = new mytokenInFo(Integer.toString(result_kw));
-
+                        mytokenInFo E_mytoken_data = new mytokenInFo(Integer.toString(result_token));
+                        mykwInFo E_mykw_data = new mykwInFo(Float.toString(result_kw));
                         //
                         mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                         kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
@@ -183,6 +204,7 @@ public class Sale extends AppCompatActivity {
                         mainIntent.putExtra("data", data);
                         mainIntent.putExtra("kw_data", kw_data);
                         mainIntent.putExtra("mytoken_data", E_mytoken_data);
+                        mainIntent.putExtra("mykw_data", E_mykw_data);
                         startActivityForResult(mainIntent, 101);
 
                         //
@@ -200,6 +222,7 @@ public class Sale extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Sale.this);
                 dialog = builder.setMessage("판매 실패했습니다.").setNegativeButton("확인",null).create();
+                Toast.makeText(getApplicationContext(), "판매 실패했습니다.", Toast.LENGTH_LONG).show();
                 dialog.show();
                 finish();
 

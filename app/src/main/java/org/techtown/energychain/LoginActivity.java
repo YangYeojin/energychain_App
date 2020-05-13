@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity{
 
     String id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server, carnum_server;
     String kw_server;
+    String mykw_server;
     String mytoken_server;
 
 
@@ -113,6 +114,24 @@ public class LoginActivity extends AppCompatActivity{
                     }
                 });
 
+
+                //나의 kw알기위한 접속
+                String mykwurl = "http://210.115.182.155:3000/balanceOf/"+idText_String+"energy";
+                StringRequest mykw_stringRequest = new StringRequest(Request.Method.GET, mykwurl, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String mykw_response) {
+                        String response_dummy = mykw_response.replaceAll("\\\\", "");
+                        mykw_response = response_dummy.substring(1, response_dummy.length()-1);
+                        mykw_server = mykw_response;
+
+                    }
+                },new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+
+                    }
+                });
                 //여기까지
 
 
@@ -155,10 +174,12 @@ public class LoginActivity extends AppCompatActivity{
                                     mInFo data = new mInFo(id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server, carnum_server);
                                     kwInFo kw_data = new kwInFo(kw_server);
                                     mytokenInFo mytoken_data = new mytokenInFo(mytoken_server);
+                                    mykwInFo mykw_data = new mykwInFo(mykw_server);
 
                                     mainIntent.putExtra("data", data);
                                     mainIntent.putExtra("kw_data", kw_data);
                                     mainIntent.putExtra("mytoken_data", mytoken_data);
+                                    mainIntent.putExtra("mykw_data", mykw_data);
                                     LoginActivity.this.startActivityForResult(mainIntent, 101);
 
                                 } else {
@@ -206,6 +227,8 @@ public class LoginActivity extends AppCompatActivity{
                 mytoken_stringRequest.setShouldCache(false);
                 AppHelper.RequestQueue.add(mytoken_stringRequest);
 
+                mykw_stringRequest.setShouldCache(false);
+                AppHelper.RequestQueue.add(mykw_stringRequest);
 
             }
         });

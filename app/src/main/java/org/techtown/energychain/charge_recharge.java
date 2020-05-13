@@ -45,6 +45,9 @@ public class charge_recharge extends AppCompatActivity {
         chargerecharge_mywaken.setText(mytoken_data.mytoken_loggedIn);
 
 
+        final Intent mykw_Intent = getIntent();
+
+
 
 
         final Button onButton_charge_waken_with_won_really = (Button)findViewById(R.id.onButton_charge_waken_with_won_really);
@@ -72,10 +75,12 @@ public class charge_recharge extends AppCompatActivity {
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                 kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -87,10 +92,12 @@ public class charge_recharge extends AppCompatActivity {
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                 kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -104,10 +111,12 @@ public class charge_recharge extends AppCompatActivity {
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                 kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
             }
         });
@@ -120,10 +129,12 @@ public class charge_recharge extends AppCompatActivity {
                 mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                 kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
                 mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
 
             }

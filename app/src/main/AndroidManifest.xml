@@ -40,7 +40,6 @@
             android:label="@string/title_activity_search_charge" />
         <activity android:name=".MainActivity" />
         <activity android:name=".tokenmanagement" />
-        <activity android:name=".Car_Register" />
         <activity android:name=".Purchase" />
         <activity android:name=".MyPage" />
         <activity android:name=".EditMemberInfoActivity" />

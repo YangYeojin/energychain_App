@@ -27,6 +27,7 @@ public class Sale extends AppCompatActivity {
     String sale_token;
     private AlertDialog dialog;
     String KW_Cost;
+    int sa_check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +144,8 @@ public class Sale extends AppCompatActivity {
         }
 
     }
+
+    //판매버튼 - (금액구하기)
     public void sale_kwButton_Click(View v) {
         EditText saleCount = (EditText) findViewById(R.id.saleCount);
         TextView profitForSale = (TextView) findViewById(R.id.profitForSale);
@@ -154,17 +157,17 @@ public class Sale extends AppCompatActivity {
             sale_token = Integer.toString(n1*n2);
             sale_kw = Integer.toString(n1);
             profitForSale.setText(Integer.toString(n1*n2));
+            sa_check=1;
         }
     }
 
 
     public void tokensaleRequest(){
-        final String url = "http://210.115.182.155:3000/transfer";
-        // 변수 선언
-
 
         final Intent passedIntent = getIntent();
         mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+
+        final String url = "http://210.115.182.155:"+data.orgname_loggedIn+"/transfer";
 
 
         final String caller_id = "Wstation"; //뒤에서 붙이기
@@ -173,19 +176,38 @@ public class Sale extends AppCompatActivity {
         final String transferAmount = sale_kw;
 
 
+        final Intent mykw_Intent = getIntent();
+        mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
+
+
+        if(sa_check!=1){
+            AlertDialog.Builder builder = new AlertDialog.Builder(Sale.this);
+            dialog = builder.setMessage("판매할 kW을 입력하세요.").setPositiveButton("확인", null).create();
+            dialog.show();
+            return;
+        }
+
+        if(Integer.parseInt(sale_kw)>(int)Float.parseFloat(mykw_data.mykw_loggedIn)){
+            AlertDialog.Builder builder = new AlertDialog.Builder(Sale.this);
+            dialog = builder.setMessage("보유 전력량이 부족합니다.").setPositiveButton("확인", null).create();
+            dialog.show();
+            return;
+        }
+
+
         StringRequest mytoken_request = new StringRequest(
                 Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Sale.this);
-                        dialog = builder.setMessage("판매 성공했습니다.").setPositiveButton("확인",null).create();
-                        Toast.makeText(getApplicationContext(), "판매 성공했습니다.", Toast.LENGTH_SHORT).show();
-
                         final Intent passedIntent = getIntent();
                         final Intent kw_Intent = getIntent();
                         final Intent mytokenIntent = getIntent();
                         final Intent mykw_Intent = getIntent();
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Sale.this);
+                        dialog = builder.setMessage("판매 성공했습니다.").setPositiveButton("확인",null).create();
+
 
                         mytokenInFo mytoken_data = (mytokenInFo)mytokenIntent.getParcelableExtra("mytoken_data");
                         mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
@@ -207,11 +229,12 @@ public class Sale extends AppCompatActivity {
                         mainIntent.putExtra("mykw_data", E_mykw_data);
                         startActivityForResult(mainIntent, 101);
 
-                        //
-
                         dialog.show();
 
                         Sale.this.startActivityForResult(mainIntent, 101);
+
+
+
                     }
 
                 }, new Response.ErrorListener() {
@@ -222,11 +245,8 @@ public class Sale extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Sale.this);
                 dialog = builder.setMessage("판매 실패했습니다.").setNegativeButton("확인",null).create();
-                Toast.makeText(getApplicationContext(), "판매 실패했습니다.", Toast.LENGTH_LONG).show();
                 dialog.show();
                 finish();
-
-
 
             }
         }

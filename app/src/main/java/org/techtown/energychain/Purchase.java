@@ -29,6 +29,7 @@ public class Purchase extends AppCompatActivity {
     String purchase_token;
     private AlertDialog dialog;
     String KW_Cost;
+    int pu_check;
 
 
     @Override
@@ -44,6 +45,7 @@ public class Purchase extends AppCompatActivity {
 
 
 
+        //intent 시작
         final Intent passedIntent = getIntent();
 
         final Intent kw_Intent = getIntent();
@@ -69,9 +71,9 @@ public class Purchase extends AppCompatActivity {
             public void onClick(View v) {
                 tokenpurchaseRequest();
             }
-        }); //output
+        });
 
-
+        //상단메뉴 버튼 구현
         energymainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,7 +149,16 @@ public class Purchase extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(Purchase.this, charge_recharge.class);
-                startActivity(mainIntent);
+                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
+
+                mainIntent.putExtra("data", data);
+                mainIntent.putExtra("kw_data", kw_data);
+                mainIntent.putExtra("mytoken_data", mytoken_data);
+                mainIntent.putExtra("mykw_data", mykw_data);
+                startActivityForResult(mainIntent, 101);
             }
         });
 
@@ -161,9 +172,12 @@ public class Purchase extends AppCompatActivity {
 
 
     }
+    //구매버튼 - (금액구하기)
     public void purchase_kwButton_Click(View v) {
         EditText purchaseCount = (EditText) findViewById(R.id.purchaseCount);
         TextView purchase_needtoken = (TextView) findViewById(R.id.purchase_needtoken);
+
+
         if (purchaseCount.getText().toString().matches("")){
             Toast.makeText(getApplicationContext(), "구매할 kW을 입력하세요.", Toast.LENGTH_SHORT).show();
         } else {
@@ -172,25 +186,41 @@ public class Purchase extends AppCompatActivity {
             purchase_token = Integer.toString(n1*n2);
             purchase_kw = Integer.toString(n1);
             purchase_needtoken.setText(Integer.toString(n1*n2));
+            pu_check=1;
         }
     }
 
 
-    //여기부터 고치기
+    //구매버튼 - (거래기능)
     public void tokenpurchaseRequest(){
-        final String url = "http://210.115.182.155:3000/transfer";
-        // 변수 선언
-
 
         final Intent passedIntent = getIntent();
         mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
 
+        final String url = "http://210.115.182.155:"+data.orgname_loggedIn+"/transfer";
 
-        final String caller_id = data.id_loggedIn; //뒤에서 붙이기
+        final String caller_id = data.id_loggedIn;
         final String recipient_id = "Wstation";
         final String location = "location";
         final String transferAmount = purchase_token;
 
+        final Intent mytoken_Intent = getIntent();
+        mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
+
+
+        if(pu_check!=1){
+            AlertDialog.Builder builder = new AlertDialog.Builder(Purchase.this);
+            dialog = builder.setMessage("구매할 kW을 입력하세요.").setPositiveButton("확인", null).create();
+            dialog.show();
+            return;
+        }
+
+        if(Integer.parseInt(purchase_token)>Integer.parseInt(mytoken_data.mytoken_loggedIn)){
+            AlertDialog.Builder builder = new AlertDialog.Builder(Purchase.this);
+            dialog = builder.setMessage("보유 토큰이 부족합니다.").setPositiveButton("확인", null).create();
+            dialog.show();
+            return;
+        }
 
 
         StringRequest mytoken_request = new StringRequest(
@@ -198,14 +228,14 @@ public class Purchase extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Purchase.this);
-                        dialog = builder.setMessage("구매 성공했습니다.").setPositiveButton("확인",null).create();
-                        Toast.makeText(getApplicationContext(), "구매 성공했습니다.", Toast.LENGTH_SHORT).show();
-
                         final Intent passedIntent = getIntent();
                         final Intent kw_Intent = getIntent();
                         final Intent mytokenIntent = getIntent();
                         final Intent mykw_Intent = getIntent();
+
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Purchase.this);
+                        dialog = builder.setMessage("구매 성공했습니다.").setPositiveButton("확인",null).create();
 
                         mytokenInFo mytoken_data = (mytokenInFo)mytokenIntent.getParcelableExtra("mytoken_data");
                         mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
@@ -216,7 +246,7 @@ public class Purchase extends AppCompatActivity {
                         Intent mainIntent = new Intent(getApplicationContext(), Purchase.class);
                         mytokenInFo E_mytoken_data = new mytokenInFo(Integer.toString(result_token));
                         mykwInFo E_mykw_data = new mykwInFo(Float.toString(result_kw));
-                        //
+
                         mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                         kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
 
@@ -228,11 +258,12 @@ public class Purchase extends AppCompatActivity {
 
                         startActivityForResult(mainIntent, 101);
 
-                        //
+
 
                         dialog.show();
 
                         Purchase.this.startActivityForResult(mainIntent, 101);
+
                     }
 
                 }, new Response.ErrorListener() {
@@ -245,8 +276,6 @@ public class Purchase extends AppCompatActivity {
                 dialog = builder.setMessage("구매 실패했습니다.").setNegativeButton("확인",null).create();
                 dialog.show();
                 finish();
-
-
 
             }
         }

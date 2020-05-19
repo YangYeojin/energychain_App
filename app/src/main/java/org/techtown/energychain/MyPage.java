@@ -23,19 +23,20 @@ public class MyPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
 
-        final Button NoticeButton = (Button)findViewById(R.id.NoticeButton);
-        final Button EditPersonalButton = (Button)findViewById(R.id.EditPersonalButton);
-        final Button TransactionHistoryButton = (Button)findViewById(R.id.TransactionHistoryButton);
-        final Button ExchangeButton = (Button)findViewById(R.id.ExchangeButton);
+        final Button NoticeButton = (Button) findViewById(R.id.NoticeButton);
+        final Button EditPersonalButton = (Button) findViewById(R.id.EditPersonalButton);
+        final Button TransactionHistoryButton = (Button) findViewById(R.id.TransactionHistoryButton);
+        final Button ExchangeButton = (Button) findViewById(R.id.ExchangeButton);
         //final Button LogoutButton = (Button)findViewById(R.id.LogoutButton);
-        final Button energymainButton = (Button)findViewById(R.id.energymainButton);
-        final Button purchaseButton = (Button)findViewById(R.id.purchaseButton);
-        final Button saleButton = (Button)findViewById(R.id.saleButton);
-        final Button mydataButton = (Button)findViewById(R.id.mydataButton);
+        final Button energymainButton = (Button) findViewById(R.id.energymainButton);
+        final Button purchaseButton = (Button) findViewById(R.id.purchaseButton);
+        final Button saleButton = (Button) findViewById(R.id.saleButton);
+        final Button mydataButton = (Button) findViewById(R.id.mydataButton);
+        final Button LogoutButton = (Button) findViewById(R.id.LogoutButton);
 
         // yeojin 05.03 01시
         final Intent passedIntent = getIntent();
-        mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+        mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
         TextView editText_name = (TextView) findViewById(R.id.editText_name);
         editText_name.setText(data.name_loggedIn);
 
@@ -48,10 +49,10 @@ public class MyPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
-                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
-                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
-                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
-                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
+                mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo) kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo) mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo) mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
@@ -65,10 +66,10 @@ public class MyPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), Purchase.class);
-                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
-                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
-                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
-                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
+                mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo) kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo) mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo) mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
@@ -83,10 +84,10 @@ public class MyPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), Sale.class);
-                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
-                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
-                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
-                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
+                mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo) kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo) mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo) mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
@@ -101,10 +102,10 @@ public class MyPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), MyPage.class);
-                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
-                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
-                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
-                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
+                mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo) kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo) mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo) mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
@@ -119,67 +120,81 @@ public class MyPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), Notice.class);
-                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
-                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
-                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
-                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
+                mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo) kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo) mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo) mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
                 mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
-            }});
+            }
+        });
 
         EditPersonalButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), EditMemberInfoActivity.class);
-                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
-                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
-                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
-                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
+                mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo) kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo) mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo) mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
                 mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
-            }});
+            }
+        });
 
         TransactionHistoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), TransactionHistory.class);
-                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
-                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
-                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
-                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
+                mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo) kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo) mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo) mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
                 mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
-            }});
+            }
+        });
 
         ExchangeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent mainIntent = new Intent(getApplicationContext(), charge_recharge.class);
-                mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
-                kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
-                mytokenInFo mytoken_data = (mytokenInFo)mytoken_Intent.getParcelableExtra("mytoken_data");
-                mykwInFo mykw_data = (mykwInFo)mykw_Intent.getParcelableExtra("mykw_data");
+                mInFo data = (mInFo) passedIntent.getParcelableExtra("data");
+                kwInFo kw_data = (kwInFo) kw_Intent.getParcelableExtra("kw_data");
+                mytokenInFo mytoken_data = (mytokenInFo) mytoken_Intent.getParcelableExtra("mytoken_data");
+                mykwInFo mykw_data = (mykwInFo) mykw_Intent.getParcelableExtra("mykw_data");
 
                 mainIntent.putExtra("data", data);
                 mainIntent.putExtra("kw_data", kw_data);
                 mainIntent.putExtra("mytoken_data", mytoken_data);
                 mainIntent.putExtra("mykw_data", mykw_data);
                 startActivityForResult(mainIntent, 101);
-            }});
+            }
+        });
 
+
+        LogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent LoginActivityIntent = new Intent(MyPage.this, LoginActivity.class);
+                startActivity(LoginActivityIntent);
+            }
+
+        });
     }
-
 
 }

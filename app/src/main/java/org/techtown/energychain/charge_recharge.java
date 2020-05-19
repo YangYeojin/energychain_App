@@ -31,11 +31,12 @@ public class charge_recharge extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charge_recharge);
 
+
+        //intent 시작
         final Button energymainButton = (Button)findViewById(R.id.energymainButton);
         final Button purchaseButton = (Button)findViewById(R.id.purchaseButton);
         final Button saleButton = (Button)findViewById(R.id.saleButton);
         final Button mydataButton = (Button)findViewById(R.id.mydataButton);
-
 
         final Intent passedIntent = getIntent();
         final Intent kw_Intent = getIntent();
@@ -44,30 +45,10 @@ public class charge_recharge extends AppCompatActivity {
         TextView chargerecharge_mywaken =(TextView)findViewById(R.id.chargerecharge_mywaken);
         chargerecharge_mywaken.setText(mytoken_data.mytoken_loggedIn);
 
-
         final Intent mykw_Intent = getIntent();
 
 
-
-
-        final Button onButton_charge_waken_with_won_really = (Button)findViewById(R.id.onButton_charge_waken_with_won_really);
-        onButton_charge_waken_with_won_really.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onButton_charge_waken_with_won_reallyRequest();
-            }
-        }); //output
-
-
-        final Button onButton_recharge_waken_to_won_really = (Button)findViewById(R.id.onButton_recharge_waken_to_won_really);
-        onButton_recharge_waken_to_won_really.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onButton_recharge_waken_to_won_reallyRequest();
-            }
-        }); //output
-
-
+        //상단메뉴 버튼 시작
         energymainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,8 +120,28 @@ public class charge_recharge extends AppCompatActivity {
 
             }
         });
+
+
+        //화면(메인) 버튼 시작
+        final Button onButton_charge_waken_with_won_really = (Button)findViewById(R.id.onButton_charge_waken_with_won_really);
+        onButton_charge_waken_with_won_really.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButton_charge_waken_with_won_reallyRequest();
+            }
+        }); //output
+
+
+        final Button onButton_recharge_waken_to_won_really = (Button)findViewById(R.id.onButton_recharge_waken_to_won_really);
+        onButton_recharge_waken_to_won_really.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButton_recharge_waken_to_won_reallyRequest();
+            }
+        }); //output
     }
 
+    //화면(메뉴) 금액 체크 버튼 구현
     public void charge_waken_Click(View v) {
         EditText charge_waken = (EditText) findViewById(R.id.charge_waken);
         TextView charged_waken = (TextView) findViewById(R.id.charged_waken);
@@ -169,16 +170,16 @@ public class charge_recharge extends AppCompatActivity {
 
 
 
-    //여기
-
+    //화면(메인) 기능
     public void onButton_charge_waken_with_won_reallyRequest(){
-        final String url = "http://210.115.182.155:3000/transfer";
-        // 변수 선언
 
         final Intent passedIntent = getIntent();
         mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
 
-        final String caller_id = "Wstation"; //뒤에서 붙이기
+        final String url = "http://210.115.182.155:"+data.orgname_loggedIn+"/transfer";
+
+
+        final String caller_id = "Wstation";
         final String recipient_id = data.id_loggedIn;
         final String location = "location";
         final String transferAmount = charged_waken_data;
@@ -188,9 +189,8 @@ public class charge_recharge extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(charge_recharge.this);
-                        dialog = builder.setMessage("충전 성공했습니다.").setPositiveButton("확인",null).create();
-                        Toast.makeText(getApplicationContext(), "충전 성공했습니다.", Toast.LENGTH_SHORT).show();
+
+                        //Toast.makeText(getApplicationContext(), "충전 성공했습니다.", Toast.LENGTH_SHORT).show();
 
                         final Intent passedIntent = getIntent();
                         final Intent kw_Intent = getIntent();
@@ -202,21 +202,20 @@ public class charge_recharge extends AppCompatActivity {
                         Intent mainIntent = new Intent(getApplicationContext(), charge_recharge.class);
                         mytokenInFo E_mytoken_data = new mytokenInFo(Integer.toString(result_kw));
 
-                        //
                         mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                         kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
-
 
                         mainIntent.putExtra("data", data);
                         mainIntent.putExtra("kw_data", kw_data);
                         mainIntent.putExtra("mytoken_data", E_mytoken_data);
                         startActivityForResult(mainIntent, 101);
+                        charge_recharge.this.startActivityForResult(mainIntent, 101);
 
-                        //
-
+                        AlertDialog.Builder builder = new AlertDialog.Builder(charge_recharge.this);
+                        dialog = builder.setMessage("충전 성공했습니다.").setPositiveButton("확인",null).create();
                         dialog.show();
 
-                        charge_recharge.this.startActivityForResult(mainIntent, 101);
+
                     }
 
                 }, new Response.ErrorListener() {
@@ -254,11 +253,14 @@ public class charge_recharge extends AppCompatActivity {
     //여기
 
     public void onButton_recharge_waken_to_won_reallyRequest(){
-        final String url = "http://210.115.182.155:3000/transfer";
-        // 변수 선언
 
         final Intent passedIntent = getIntent();
         mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
+
+        final String url = "http://210.115.182.155:"+data.orgname_loggedIn+"/transfer";
+        // 변수 선언
+
+
 
         final String caller_id = data.id_loggedIn; //뒤에서 붙이기
         final String recipient_id = "Wstation";
@@ -270,10 +272,6 @@ public class charge_recharge extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(charge_recharge.this);
-                        dialog = builder.setMessage("환전 성공했습니다.").setPositiveButton("확인",null).create();
-                        Toast.makeText(getApplicationContext(), "환전 성공했습니다.", Toast.LENGTH_SHORT).show();
-
                         final Intent passedIntent = getIntent();
                         final Intent kw_Intent = getIntent();
                         final Intent mytokenIntent = getIntent();
@@ -284,21 +282,20 @@ public class charge_recharge extends AppCompatActivity {
                         Intent mainIntent = new Intent(getApplicationContext(), charge_recharge.class);
                         mytokenInFo E_mytoken_data = new mytokenInFo(Integer.toString(result_kw));
 
-                        //
                         mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
                         kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
-
 
                         mainIntent.putExtra("data", data);
                         mainIntent.putExtra("kw_data", kw_data);
                         mainIntent.putExtra("mytoken_data", E_mytoken_data);
                         startActivityForResult(mainIntent, 101);
+                        charge_recharge.this.startActivityForResult(mainIntent, 101);
 
-                        //
-
+                        AlertDialog.Builder builder = new AlertDialog.Builder(charge_recharge.this);
+                        dialog = builder.setMessage("환전 성공했습니다.").setPositiveButton("확인",null).create();
+                        //Toast.makeText(getApplicationContext(), "환전 성공했습니다.", Toast.LENGTH_SHORT).show();
                         dialog.show();
 
-                        charge_recharge.this.startActivityForResult(mainIntent, 101);
                     }
 
                 }, new Response.ErrorListener() {

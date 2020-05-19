@@ -171,7 +171,7 @@ public class TransactionHistory extends AppCompatActivity {
     public void gethistory(){
         final Intent passedIntent = getIntent();
         mInFo data = (mInFo)passedIntent.getParcelableExtra("data");
-        String historyurl = "http://210.115.182.155:3000/historyAPI/"+data.id_loggedIn+"history";
+        String historyurl = "http://210.115.182.155:"+data.orgname_loggedIn+"/historyAPI/"+data.id_loggedIn+"history";
 
         StringRequest historystringRequest = new StringRequest(Request.Method.GET, historyurl, new Response.Listener<String>() {
             @Override

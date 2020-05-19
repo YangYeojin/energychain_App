@@ -7,10 +7,13 @@ import android.app.DownloadManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private ArrayAdapter adapter;
     private Spinner spinner;
+    private String userORG;
     private AlertDialog dialog;
     int id_check_OK= 0;
     @Override
@@ -48,6 +52,20 @@ public class RegisterActivity extends AppCompatActivity {
         spinner = (Spinner)findViewById(R.id.regi_bank_data);
         adapter = ArrayAdapter.createFromResource(this, R.array.bank, android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        //소속
+        RadioGroup OrgGroup = (RadioGroup)findViewById(R.id.OrgGroup);
+        int OrgGroupID = OrgGroup.getCheckedRadioButtonId();
+        userORG= ((RadioButton)findViewById(OrgGroupID)).getText().toString();
+
+        OrgGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton OrgButton = (RadioButton)findViewById(checkedId);
+                userORG = OrgButton.getText().toString();
+
+            }
+        });
 
         final Button validataButton =(Button)findViewById(R.id.validateButton);
         validataButton.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +178,18 @@ public class RegisterActivity extends AppCompatActivity {
         final String regi_car_data_String = regi_car_data.getText().toString(); // 수정
         final String regi_bank_data_String = regi_bank_data.getSelectedItem().toString();
         final String regi_account_data_String = regi_account_data.getText().toString();
+        switch (userORG){
+            case "전기차":
+                userORG = "3000";
+                break;
+            case "산업단지":
+                userORG = "4000";
+                break;
+            case "태양열":
+                userORG = "5000";
+                break;
+        }
+        final String regi_userorg_String = userORG;
 
         if(idText_String.equals("")||passwordText_String.equals("")||emailText_String.equals("")||regi_name_date_String.equals("")||regi_phonenumber_data_String.equals("")||regi_number_data_String.equals("")||regi_car_data_String.equals("")||regi_bank_data_String.equals("")||regi_account_data_String.equals("")) {
             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
@@ -228,8 +258,6 @@ public class RegisterActivity extends AppCompatActivity {
                     dialog.show();
                     finish();
 
-
-
                 }
             }
         ){
@@ -245,6 +273,7 @@ public class RegisterActivity extends AppCompatActivity {
                 params.put("bank", regi_bank_data_String);
                 params.put("banknum", regi_account_data_String);
                 params.put("carnum", regi_car_data_String);
+                params.put("orgname", regi_userorg_String);
                 return params;
             }
         };

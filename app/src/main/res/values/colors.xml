@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FF9800</color> <!-- title bar 색 변경-->
-    <color name="colorPrimaryDark">#FF5722</color>
+    <color name="colorPrimaryDark">#F44336</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colorWarning">#383E39</color>
     <color name="white">#FFFFFFFF</color>

@@ -36,7 +36,7 @@ import java.util.SimpleTimeZone;
 
 public class LoginActivity extends AppCompatActivity{
 
-    String id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server, carnum_server;
+    String id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server, carnum_server, orgname_server;
     String kw_server;
     String mykw_server;
     String mytoken_server;
@@ -58,15 +58,12 @@ public class LoginActivity extends AppCompatActivity{
             public void onClick(View v) {
                 Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(registerIntent);
-                //LoginActivity.this.startActivity(registerIntent);
             }
         });
 
 
 
-        // yeojin start
-        // * 로그인 버튼 선언
-        // 참고 : 나는 통일감있게 loginButton을 TextView로 변경함
+        // 로그인 버튼 클릭시 기능 구현
         final Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -78,8 +75,7 @@ public class LoginActivity extends AppCompatActivity{
                 final String passwordText_String = passwordText.getText().toString();
 
 
-                //보유토큰 알기위한 접속
-
+                //나의 보유토큰 알기위한 접속
                 String mytokenurl = "http://210.115.182.155:3000/balanceOf/"+idText_String;
                 StringRequest mytoken_stringRequest = new StringRequest(Request.Method.GET, mytokenurl, new Response.Listener<String>() {
                     @Override
@@ -96,7 +92,7 @@ public class LoginActivity extends AppCompatActivity{
                     }
                 });
 
-                //kw알기위한 접속
+                //전력요금 알기위한 접속
                 String kwurl = "http://210.115.182.155:3000/balanceOf/Cost";
                 StringRequest kw_stringRequest = new StringRequest(Request.Method.GET, kwurl, new Response.Listener<String>() {
                     @Override
@@ -115,7 +111,7 @@ public class LoginActivity extends AppCompatActivity{
                 });
 
 
-                //나의 kw알기위한 접속
+                //나의 전력량 알기위한 접속
                 String mykwurl = "http://210.115.182.155:3000/balanceOf/"+idText_String+"energy";
                 StringRequest mykw_stringRequest = new StringRequest(Request.Method.GET, mykwurl, new Response.Listener<String>() {
                     @Override
@@ -132,11 +128,6 @@ public class LoginActivity extends AppCompatActivity{
 
                     }
                 });
-                //여기까지
-
-
-
-
 
 
 
@@ -163,6 +154,7 @@ public class LoginActivity extends AppCompatActivity{
                             bank_server = jsonElement.getAsJsonObject().get("bank").getAsString();
                             banknum_server = jsonElement.getAsJsonObject().get("banknum").getAsString();
                             carnum_server = jsonElement.getAsJsonObject().get("carnum").getAsString();
+                            orgname_server = jsonElement.getAsJsonObject().get("orgname").getAsString();
 
 
                             // # 05.02 until here
@@ -171,7 +163,7 @@ public class LoginActivity extends AppCompatActivity{
                                 if (id_server.equals(idText_String) && pw_server.equals(passwordText_String)){
 
                                     Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);
-                                    mInFo data = new mInFo(id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server, carnum_server);
+                                    mInFo data = new mInFo(id_server, pw_server, name_server, ph_server, email_server, residentnum_server, bank_server, banknum_server, carnum_server, orgname_server);
                                     kwInFo kw_data = new kwInFo(kw_server);
                                     mytokenInFo mytoken_data = new mytokenInFo(mytoken_server);
                                     mykwInFo mykw_data = new mykwInFo(mykw_server);

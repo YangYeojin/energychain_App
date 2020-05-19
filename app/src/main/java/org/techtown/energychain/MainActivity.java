@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         final Intent passedIntent = getIntent();
 
+
         final Intent kw_Intent = getIntent();
         kwInFo kw_data = (kwInFo)kw_Intent.getParcelableExtra("kw_data");
         TextView main_kw = (TextView) findViewById(R.id.main_kw);

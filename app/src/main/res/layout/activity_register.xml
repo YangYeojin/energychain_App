@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -196,6 +196,43 @@
 
             </LinearLayout>
 
+
+            <RadioGroup
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/OrgGroup"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="전기차"
+                    android:id="@+id/group_car"
+                    android:layout_weight="1"
+                    android:checked="true"/>
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="산업단지"
+                    android:id="@+id/group_industrials"
+                    android:layout_weight="1"
+                    android:checked="false"/>
+
+                <RadioButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="태양열"
+                    android:id="@+id/group_sun"
+                    android:layout_weight="1"
+                    android:checked="false"/>
+
+
+
+            </RadioGroup>
+
+
+
             <LinearLayout
                 android:layout_width="280dp"
                 android:layout_height="wrap_content"
@@ -302,5 +339,5 @@
     </LinearLayout>
 
 
-</RelativeLayout>
+</ScrollView>
 
